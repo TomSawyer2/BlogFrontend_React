@@ -6,8 +6,9 @@ export default defineConfig({
   },
   routes: [
     { path: '/', component: '@/pages/index/index' },
-    { path: '/home', component: '@/pages/home/home' }
+    { path: '/home', component: '@/pages/home/home' },
   ],
   fastRefresh: {},
-  mfsu: {}
+  mfsu: {},
+  dynamicImport: {},
 });

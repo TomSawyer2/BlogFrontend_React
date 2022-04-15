@@ -16,90 +16,81 @@
 
 /**
  * @description 存入token
- * @param {String} content
+ * @param {string} content
  */
- export function setToken(content: string) {
-    if (!localStorage) {
-        throw new Error('您的浏览器不支持localStorage,请尝试更新浏览器');
-    }
-    localStorage.setItem('token', content);
+export function setToken(content: string) {
+  if (!localStorage)
+    throw new Error('您的浏览器不支持localStorage,请尝试更新浏览器');
+  localStorage.setItem('token', content);
 }
 
 /**
  * @description 取得token
- * @returns {String} token
+ * @returns {string} token
  */
 export function getToken() {
-    if (!localStorage) {
-        return '';
-    }
-    const token = localStorage.getItem('token') || '';
-    return token;
+  if (!localStorage) return '';
+  const token = localStorage.getItem('token') || '';
+  return token;
 }
 
 /**
  * @description 删除token
  */
 export function removeToken() {
-    localStorage.removeItem('token');
+  localStorage.removeItem('token');
 }
 
 /**
  * @description 存入文章的ID
- * @param {String} content
+ * @param {string} content
  */
 export function setDetailId(content: string) {
-    if (!localStorage) {
-        throw new Error('您的浏览器不支持localStorage,请尝试更新浏览器');
-    }
-    localStorage.setItem('id', content);
+  if (!localStorage)
+    throw new Error('您的浏览器不支持localStorage,请尝试更新浏览器');
+  localStorage.setItem('id', content);
 }
 
 /**
  * @description 取得文章的ID
- * @returns {String} ID
+ * @returns {string} ID
  */
 export function getDetailId() {
-    if (!localStorage) {
-        return -1;
-    }
-    const id = localStorage.getItem('id') || '';
-    return id;
+  if (!localStorage) return -1;
+  const id = localStorage.getItem('id') || '';
+  return id;
 }
 
 /**
  * @description 删除文章的ID
  */
 export function removeDetailId() {
-    localStorage.removeItem('id');
+  localStorage.removeItem('id');
 }
 
 /**
  * @description 存入文章
- * @param {String} content
+ * @param {string} content
  */
 export function setArticle(content: string) {
-    if (!localStorage) {
-        throw new Error('您的浏览器不支持localStorage,请尝试更新浏览器');
-    }
-    localStorage.setItem('article', content);
+  if (!localStorage)
+    throw new Error('您的浏览器不支持localStorage,请尝试更新浏览器');
+  localStorage.setItem('article', content);
 }
 
 /**
  * @description 取得文章
- * @returns {String} article
+ * @returns {string} article
  */
 export function getArticle() {
-    if (!localStorage) {
-        return '';
-    }
-    const token = localStorage.getItem('article') || '';
-    return token;
+  if (!localStorage) return '';
+  const token = localStorage.getItem('article') || '';
+  return token;
 }
 
 /**
  * @description 删除文章
  */
 export function removeArticle() {
-    localStorage.removeItem('article');
+  localStorage.removeItem('article');
 }
