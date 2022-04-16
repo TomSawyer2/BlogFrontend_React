@@ -1,10 +1,6 @@
 import React from 'react';
 import { Parallax } from 'react-parallax';
 
-const styles: React.CSSProperties = {
-  fontFamily: 'sans-serif',
-  textAlign: 'center',
-};
 const insideStyles: React.CSSProperties = {
   color: 'white',
   fontSize: '60px',
@@ -21,15 +17,19 @@ const image =
 
 const ParallaxBanner: React.FC<any> = () => {
   const content = (
-    <div id="parallaxBanner" style={{transform: 'translateY(-64px)'}}>
-      <Parallax bgImage={image} strength={1000} bgStyle={{
+    <div id="parallaxBanner" style={{ transform: 'translateY(-64px)' }}>
+      <Parallax
+        bgImage={image}
+        strength={1000}
+        bgStyle={{
           backgroundRepeat: 'no-repeat',
           backgroundAttachment: 'fixed',
           zoom: 1,
           minWidth: '1000px',
           backgroundSize: 'cover',
           backgroundPosition: 'center 0',
-        }}>
+        }}
+      >
         <div style={{ height: '250vh' }}>
           <div style={insideStyles}>TomSawyer2's Blog</div>
         </div>

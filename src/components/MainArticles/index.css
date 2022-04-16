@@ -1,15 +1,96 @@
 .mainarticles {
-    height: 100vh;
-    width: 100vw;
-    overflow: auto;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
 }
 
 .article {
-    height: 120vh;
-    width: 100vw;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    font-size: 50px;
+  height: 100vh;
+  width: 100vw;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  margin-left: 50px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+  animation: fade-in; /*动画名称*/
+  animation-duration: 1.5s; /*动画持续时间*/
+  -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+}
+
+.circle_img {
+  margin-left: 50px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+  animation: fade-in; /*动画名称*/
+  animation-duration: 1.5s; /*动画持续时间*/
+  -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+  object-fit: cover;
+}
+
+.circle_left {
     display: flex;
-    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    margin-left: 100px;
+}
+
+.circle_right {
+    display: flex;
+    justify-content: flex-end;
+    width: 100vw;
+    margin-right: 100px;
+}
+
+.fade-in-circle {
+  visibility: hidden;
+  animation-name: fade-in;
+  -webkit-animation-name: fade-in;
+  background-color: bisque;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+  animation: fade-in; /*动画名称*/
+  animation-duration: 1.5s; /*动画持续时间*/
+  -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  } /*初始状态 透明度为0*/
+
+  40% {
+    opacity: 0;
+  } /*过渡状态 透明度为0*/
+
+  100% {
+    opacity: 1;
+  } /*结束状态 透明度为1*/
+}
+
+@-webkit-keyframes fade-in {
+  /*针对webkit内核*/
+
+  0% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
