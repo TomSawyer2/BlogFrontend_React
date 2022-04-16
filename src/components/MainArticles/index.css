@@ -1,0 +1,15 @@
+.mainarticles {
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+}
+
+.article {
+    height: 120vh;
+    width: 100vw;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+}
