@@ -7,6 +7,8 @@ interface ArticleProps {
   title: string;
   imgUrl?: string;
   ref?: any;
+  brief: string;
+  tags: string[];
 }
 
 const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
@@ -23,7 +25,7 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
   };
   const renderArr = [
     <Circle imgUrl={props.imgUrl} mykey={props.mykey} />,
-    <ArticleBrief title={props.title} />,
+    <ArticleBrief title={props.title} brief={props.brief} tags={props.tags} />,
   ];
   const isOdd = props.mykey % 2 === 0;
   return (

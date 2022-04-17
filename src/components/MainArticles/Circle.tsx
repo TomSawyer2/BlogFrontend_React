@@ -13,6 +13,7 @@ const Circle: React.FC<CircleProps> = (props) => {
   if (props.imgUrl)
     return (
       <img
+        id={`img${props.mykey.toString()}`}
         src={props.imgUrl}
         className={style['circle_img']}
         style={{ backgroundImage: props.imgUrl, backgroundColor: bgcolor }}

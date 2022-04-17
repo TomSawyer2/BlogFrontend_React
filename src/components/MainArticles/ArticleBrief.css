@@ -1,12 +1,14 @@
 .articleBrief {
-  width: 20vw;
-  margin: 20px 0;
+  width: 40vw;
+  margin: 0px 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
 }
 
 .title {
+  padding: 7px 0;
   font-size: 45px;
   font-weight: bold;
   color: #000;
@@ -18,6 +20,7 @@
 }
 
 .brief {
+  padding: 7px 0;
   font-size: 20px;
   color: #000;
   margin: 10px 20px 0px 20px;
@@ -28,13 +31,14 @@
 }
 
 .tag {
-    font-size: 20px;
-    color: #000;
-    margin: 10px 20px 0px 20px;
-    text-align: center;
-    animation: fade-in; /*动画名称*/
-    animation-duration: 2s; /*动画持续时间*/
-    -webkit-animation: fade-in 2s; /*针对webkit内核*/
+  padding: 7px 0;
+  font-size: 20px;
+  color: #000;
+  margin: 10px 20px 0px 20px;
+  text-align: center;
+  animation: fade-in; /*动画名称*/
+  animation-duration: 2s; /*动画持续时间*/
+  -webkit-animation: fade-in 2s; /*针对webkit内核*/
 }
 
 @keyframes fade-in {
