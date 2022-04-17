@@ -1,5 +1,5 @@
 import { color16 } from '@/utils/randomColor';
-import style from './index.css';
+import style from './index.less';
 
 interface CircleProps {
   mykey: number;
@@ -15,6 +15,7 @@ const Circle: React.FC<CircleProps> = (props) => {
       <img
         id={`img${props.mykey.toString()}`}
         src={props.imgUrl}
+        alt={`${props.mykey}对应的图片`}
         className={style['circle_img']}
         style={{ backgroundImage: props.imgUrl, backgroundColor: bgcolor }}
       />

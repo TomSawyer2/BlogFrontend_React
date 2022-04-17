@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import ArticleBrief from './ArticleBrief';
 import Circle from './Circle';
-import style from './index.css';
+import style from './index.less';
 interface ArticleProps {
   mykey: number;
   title: string;
@@ -25,7 +25,12 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
   };
   const renderArr = [
     <Circle imgUrl={props.imgUrl} mykey={props.mykey} />,
-    <ArticleBrief title={props.title} brief={props.brief} tags={props.tags} />,
+    <ArticleBrief
+      title={props.title}
+      brief={props.brief}
+      tags={props.tags}
+      mykey={props.mykey}
+    />,
   ];
   const isOdd = props.mykey % 2 === 0;
   return (
