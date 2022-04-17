@@ -1,0 +1,70 @@
+.articleBrief {
+  width: 20vw;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+}
+
+.title {
+  font-size: 45px;
+  font-weight: bold;
+  color: #000;
+  margin: 10px 20px 0px 20px;
+  text-align: center;
+  animation: fade-in; /*动画名称*/
+  animation-duration: 1.5s; /*动画持续时间*/
+  -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+}
+
+.brief {
+  font-size: 20px;
+  color: #000;
+  margin: 10px 20px 0px 20px;
+  text-align: center;
+  animation: fade-in; /*动画名称*/
+  animation-duration: 1.8s; /*动画持续时间*/
+  -webkit-animation: fade-in 1.8s; /*针对webkit内核*/
+}
+
+.tag {
+    font-size: 20px;
+    color: #000;
+    margin: 10px 20px 0px 20px;
+    text-align: center;
+    animation: fade-in; /*动画名称*/
+    animation-duration: 2s; /*动画持续时间*/
+    -webkit-animation: fade-in 2s; /*针对webkit内核*/
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  40% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  40% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

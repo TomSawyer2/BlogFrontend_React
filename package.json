@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
+    "@fullpage/react-fullpage": "0.1.19",
     "axios": "^0.26.1",
     "classnames": "^2.3.1",
     "qs": "^6.10.3",

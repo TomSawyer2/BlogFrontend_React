@@ -4,6 +4,12 @@
   overflow: auto;
 }
 
+.mainarticles_fullpage {
+  height: 100vh;
+  width: 100vw;
+  transform: translateY(-1882px);
+}
+
 .article {
   height: 100vh;
   width: 100vw;
@@ -15,7 +21,7 @@
 }
 
 .circle {
-  margin-left: 50px;
+  margin: 0px 50px;
   width: 500px;
   height: 500px;
   border-radius: 50%;
@@ -26,7 +32,7 @@
 }
 
 .circle_img {
-  margin-left: 50px;
+  margin: 0px 50px;
   width: 500px;
   height: 500px;
   border-radius: 50%;
@@ -38,17 +44,17 @@
 }
 
 .circle_left {
-    display: flex;
-    justify-content: flex-start;
-    width: 100vw;
-    margin-left: 100px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100vw;
+  margin-left: 50px;
 }
 
 .circle_right {
-    display: flex;
-    justify-content: flex-end;
-    width: 100vw;
-    margin-right: 100px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100vw;
+  margin-right: 50px;
 }
 
 .fade-in-circle {
@@ -65,28 +71,37 @@
   -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
 }
 
+.articleBrief {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+  animation: fade-in; /*动画名称*/
+  animation-duration: 1.5s; /*动画持续时间*/
+  -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+}
+
 @keyframes fade-in {
   0% {
     opacity: 0;
-  } /*初始状态 透明度为0*/
+    transform: translateY(50px);
+  }
 
   40% {
     opacity: 0;
-  } /*过渡状态 透明度为0*/
+    transform: translateY(20px);
+  }
 
   100% {
     opacity: 1;
-  } /*结束状态 透明度为1*/
+  }
 }
 
 @-webkit-keyframes fade-in {
-  /*针对webkit内核*/
-
   0% {
+    transform: translateY(50px);
     opacity: 0;
   }
 
   40% {
+    transform: translateY(20px);
     opacity: 0;
   }
 

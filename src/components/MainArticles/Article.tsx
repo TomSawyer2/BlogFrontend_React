@@ -1,33 +1,47 @@
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import ArticleBrief from './ArticleBrief';
 import Circle from './Circle';
 import style from './index.css';
-
-interface ArticleBriefProps {
-  title: string;
-}
-const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
-  return <span>{props.title}</span>;
-};
 interface ArticleProps {
   mykey: number;
   title: string;
   imgUrl?: string;
+  ref?: any;
 }
 
-const Article: React.FC<ArticleProps> = (props) => {
+const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    handleChange,
+  }));
+  const [visible, setVisible] = useState<Boolean>(props.mykey === 0);
+  const handleChange = (state: Boolean) => {
+    state
+      ? setVisible(true)
+      : setTimeout(() => {
+          setVisible(state);
+        }, 500);
+  };
   const renderArr = [
     <Circle imgUrl={props.imgUrl} mykey={props.mykey} />,
     <ArticleBrief title={props.title} />,
   ];
   const isOdd = props.mykey % 2 === 0;
   return (
-    <>
-      <div className={style.article} id={`article${props.mykey.toString()}`}>
+    <div className="section">
+      <div
+        className={style.article}
+        style={{
+          display: visible ? 'flex' : 'none',
+          transform: 'translateY(-64px)',
+        }}
+        id={`article${props.mykey.toString()}`}
+      >
         <div className={isOdd ? style.circle_left : style.circle_right}>
           {isOdd ? renderArr : renderArr.reverse()}
         </div>
       </div>
-    </>
+    </div>
   );
-};
+});
 
 export default Article;

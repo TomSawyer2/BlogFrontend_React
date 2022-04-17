@@ -8,7 +8,7 @@ export default defineConfig({
     { path: '/', component: '@/pages/index/index' },
     { path: '/home', component: '@/pages/home/home' },
   ],
-  fastRefresh: {},
+  // fastRefresh: {},
   // mfsu: {},
-  dynamicImport: {},
+  // dynamicImport: {},
 });
