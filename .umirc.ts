@@ -17,7 +17,9 @@ export default defineConfig({
       title: '标签 - TomSawyer2',
     },
   ],
-  // fastRefresh: {},
+  title: '博客 - TomSawyer2',
+  favicon: './favicon.ico',
+  fastRefresh: {},
   // mfsu: {},
   // dynamicImport: {},
 });
