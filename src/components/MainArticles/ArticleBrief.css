@@ -41,6 +41,31 @@
   -webkit-animation: fade-in 2s; /*针对webkit内核*/
 }
 
+.articleContent {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.articleContent_box {
+  width: 70vw;
+  background-color: RGB(255, 255, 255, 0.5);
+  box-shadow: 0 0 5px 1px;
+  animation: fade-in-box; /*动画名称*/
+  animation-duration: 1s; /*动画持续时间*/
+  -webkit-animation: fade-in-box 1s; /*针对webkit内核*/
+  cursor: auto;
+  overflow: scroll;
+}
+
+.articleContent_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: space-between;
+}
+
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -66,6 +91,22 @@
   40% {
     transform: translateY(20px);
     opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-box {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  40% {
+    opacity: 0;
+    transform: translateY(8px);
   }
 
   100% {

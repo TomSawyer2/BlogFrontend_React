@@ -1,6 +1,7 @@
+import { fullScreenContext } from '@/pages/home/home';
 import { Layout, Menu } from 'antd';
 const { Header } = Layout;
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { history } from 'umi';
 import style from './index.css';
 
@@ -10,6 +11,7 @@ interface navibarProps {
 }
 
 const NavigationBar: React.FC<navibarProps> = (props) => {
+  const { fullscreen } = useContext(fullScreenContext);
   const headerStyle = {
     headerOpacity: 0,
   };
@@ -19,14 +21,14 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
     headerStyle.headerOpacity = offsetTop / (height * 1.5) - 1;
   }
   const tab = props.tab ?? 1;
-  const path = ['', '/', '/home'];
+  const path = ['', '/', '/home', '/tags'];
   const handleClick = (e: any) => {
     const route = path[e.key];
     history.push(route);
   };
   return (
     <Header
-      className={style.navibar}
+      className={fullscreen ? style.navibar_hidden : style.navibar}
       style={{
         opacity: headerStyle.headerOpacity,
         backgroundColor: 'white',

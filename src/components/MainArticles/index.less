@@ -7,14 +7,11 @@
 .mainarticles_fullpage {
   height: 100vh;
   width: 100vw;
-  transform: translateY(-1882px);
 }
 
 .article {
   height: 100vh;
   width: 100vw;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
   font-size: 50px;
   display: flex;
   align-items: center;
@@ -40,7 +37,10 @@
   animation: fade-in; /*动画名称*/
   animation-duration: 1.5s; /*动画持续时间*/
   -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
-  object-fit: cover;
+  background-repeat: no-repeat;
+  -moz-background-size: 100% 100%;
+  background-size: cover;
+  background-position: center center;
 }
 
 .circle:hover,
@@ -52,6 +52,19 @@
   animation: fade-bigger; /*动画名称*/
   animation-duration: 1.5s; /*动画持续时间*/
   -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+}
+
+.circle_img_fullscreen {
+  width: 100vw;
+  height: 100vh;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+  background-repeat: no-repeat;
+  -moz-background-size: 100% 100%;
+  background-size: cover;
+  background-position: center center;
+  animation: fade-bigger; /*动画名称*/
+  animation-duration: 2s; /*动画持续时间*/
+  -webkit-animation: fade-in 2s; /*针对webkit内核*/
 }
 
 .circle_left {
@@ -70,8 +83,6 @@
 
 .fade-in-circle {
   visibility: hidden;
-  animation-name: fade-in;
-  -webkit-animation-name: fade-in;
   background-color: bisque;
   width: 200px;
   height: 200px;
@@ -87,6 +98,21 @@
   animation: fade-in; /*动画名称*/
   animation-duration: 1.5s; /*动画持续时间*/
   -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+}
+
+.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.fullscreen_inner {
+  background: rgb(255, 255, 255, 1);
+  filter: blur(5px);
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
 }
 
 @keyframes fade-in {
@@ -123,7 +149,6 @@
 
 @keyframes fade-bigger {
   0% {
-    margin: 0px 50px;
     width: 500px;
     height: 500px;
     border-radius: 50%;

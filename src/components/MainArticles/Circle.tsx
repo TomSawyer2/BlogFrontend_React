@@ -1,4 +1,5 @@
 import { color16 } from '@/utils/randomColor';
+import { useState } from 'react';
 import style from './index.less';
 
 interface CircleProps {
@@ -6,19 +7,28 @@ interface CircleProps {
   imgUrl?: string;
   style?: React.CSSProperties;
   className?: string;
+  fullscreen?: boolean;
+  onClick?: () => void;
 }
 
 const Circle: React.FC<CircleProps> = (props) => {
   const bgcolor = color16();
   if (props.imgUrl)
     return (
-      <img
-        id={`img${props.mykey.toString()}`}
-        src={props.imgUrl}
-        alt={`${props.mykey}对应的图片`}
-        className={style['circle_img']}
-        style={{ backgroundImage: props.imgUrl, backgroundColor: bgcolor }}
-      />
+      <div className={props.fullscreen ? style.fullscreen_inner : null}>
+        <div
+          id={`img${props.mykey.toString()}`}
+          className={
+            props.fullscreen
+              ? style['circle_img_fullscreen']
+              : style['circle_img']
+          }
+          style={{
+            backgroundImage: `url(${props.imgUrl})`,
+            backgroundColor: bgcolor,
+          }}
+        />
+      </div>
     );
   else
     return (

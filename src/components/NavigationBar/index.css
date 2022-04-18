@@ -1,5 +1,45 @@
 .navibar {
-    position: sticky;
-    top: 0;
-    z-index: 999;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  animation: fade-in; /*动画名称*/
+  animation-duration: 0.8s; /*动画持续时间*/
+  -webkit-animation: fade-in 0.8s; /*针对webkit内核*/
+}
+
+.navibar_hidden {
+  display: none;
+  animation: fade-out; /*动画名称*/
+  animation-duration: 0.8s; /*动画持续时间*/
+  -webkit-animation: fade-out 0.8s; /*针对webkit内核*/
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  40% {
+    opacity: 0.4;
+    transform: translateY(5px);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
