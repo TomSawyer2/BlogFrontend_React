@@ -27,7 +27,7 @@ const MainArticles: React.FC<any> = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       const result = await getArticles();
-      setArticles(result);
+      setArticles(result.reverse());
       setRender(true);
     };
     fetchArticles();

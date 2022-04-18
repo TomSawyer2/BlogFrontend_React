@@ -15,7 +15,13 @@ const Circle: React.FC<CircleProps> = (props) => {
   const bgcolor = color16();
   if (props.imgUrl)
     return (
-      <div className={props.fullscreen ? style.fullscreen_inner : null}>
+      <div
+        className={
+          props.fullscreen
+            ? style.fullscreen_inner
+            : style.fullscreen_inner_null
+        }
+      >
         <div
           id={`img${props.mykey.toString()}`}
           className={

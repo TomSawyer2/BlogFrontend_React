@@ -5,9 +5,17 @@ export default defineConfig({
     type: 'none',
   },
   routes: [
-    { path: '/', component: '@/pages/index/index' },
-    { path: '/home', component: '@/pages/home/home' },
-    { path: '/tags', component: '@/pages/tags/tags' },
+    { path: '/', component: '@/pages/index/index', title: '首页 - TomSawyer2' },
+    {
+      path: '/home',
+      component: '@/pages/home/home',
+      title: '全部文章 - TomSawyer2',
+    },
+    {
+      path: '/tags',
+      component: '@/pages/tags/tags',
+      title: '标签 - TomSawyer2',
+    },
   ],
   // fastRefresh: {},
   // mfsu: {},

@@ -25,7 +25,7 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
           setVisible(state);
         }, 500);
   };
-  const { fullscreen, setFullscreen } = useContext(fullScreenContext);
+  const { fullscreen, setFullscreen } = useContext<any>(fullScreenContext);
   const handleClick = () => {
     setFullscreen(!fullscreen);
   };
@@ -48,9 +48,7 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
   const isOdd = props.mykey % 2 === 0;
   const handleFullscreen: any = () => {
     if (fullscreen) {
-      return setTimeout(() => {
-        return style.fullscreen;
-      }, 500);
+      return style.fullscreen;
     } else if (isOdd) {
       return style.circle_left;
     } else {

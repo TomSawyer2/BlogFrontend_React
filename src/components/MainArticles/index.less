@@ -23,9 +23,9 @@
   height: 500px;
   border-radius: 50%;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
-  animation: fade-in; /*动画名称*/
-  animation-duration: 1.5s; /*动画持续时间*/
-  -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+  animation: fade-in;
+  animation-duration: 1s;
+  -webkit-animation: fade-in 1s;
 }
 
 .circle_img {
@@ -34,9 +34,10 @@
   height: 500px;
   border-radius: 50%;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
-  animation: fade-in; /*动画名称*/
-  animation-duration: 1.5s; /*动画持续时间*/
-  -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+  backface-visibility: hidden;
+  animation: fade-in;
+  animation-duration: 1s;
+  -webkit-animation: fade-in 1s;
   background-repeat: no-repeat;
   -moz-background-size: 100% 100%;
   background-size: cover;
@@ -49,36 +50,39 @@
   height: 600px;
   border-radius: 40%;
   margin: 0 50px;
-  animation: fade-bigger; /*动画名称*/
-  animation-duration: 1.5s; /*动画持续时间*/
-  -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+  animation: fade-bigger;
+  animation-duration: 1.5s;
+  -webkit-animation: fade-in 1.5s;
 }
 
 .circle_img_fullscreen {
   width: 100vw;
   height: 100vh;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+  backface-visibility: hidden;
   background-repeat: no-repeat;
   -moz-background-size: 100% 100%;
   background-size: cover;
   background-position: center center;
-  animation: fade-bigger; /*动画名称*/
-  animation-duration: 2s; /*动画持续时间*/
-  -webkit-animation: fade-in 2s; /*针对webkit内核*/
+  animation: fade-in;
+  animation-duration: 2s;
+  -webkit-animation: fade-in 2s;
 }
 
 .circle_left {
   display: flex;
   justify-content: flex-start;
   width: 100vw;
-  margin-left: 50px;
+  transform: translateX(50px);
 }
 
 .circle_right {
   display: flex;
   justify-content: flex-end;
   width: 100vw;
-  margin-right: 50px;
+  transform: translateX(-50px);
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
 }
 
 .fade-in-circle {
@@ -88,16 +92,16 @@
   height: 200px;
   border-radius: 50%;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
-  animation: fade-in; /*动画名称*/
-  animation-duration: 1.5s; /*动画持续时间*/
-  -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+  animation: fade-in;
+  animation-duration: 1.5s;
+  -webkit-animation: fade-in 1.5s;
 }
 
 .articleBrief {
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
-  animation: fade-in; /*动画名称*/
-  animation-duration: 1.5s; /*动画持续时间*/
-  -webkit-animation: fade-in 1.5s; /*针对webkit内核*/
+  animation: fade-in;
+  animation-duration: 1.2s;
+  -webkit-animation: fade-in 1.2s;
 }
 
 .fullscreen {
@@ -113,6 +117,10 @@
   top: 0;
   z-index: -1;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+}
+
+.fullscreen_inner_null {
+  position: relative;
 }
 
 @keyframes fade-in {

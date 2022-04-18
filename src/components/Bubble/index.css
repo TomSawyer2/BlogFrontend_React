@@ -1,12 +1,14 @@
 .bubbles {
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
     z-index: 0;
     overflow: hidden;
     top: 0;
     left: 0;
     pointer-events: none;
+    transform: translateY(-60px);
+    transform: scale(1.5, 1.5);
 }
 
 .bubble {
@@ -14,7 +16,7 @@
     bottom: -80px;
     border-radius: 50%;
     opacity: 0.5;
-    animation: flying 10s infinite ease-in;
+    animation: flying 10s infinite ease-in-out;
 }
 
 .bubble:nth-child(1) {

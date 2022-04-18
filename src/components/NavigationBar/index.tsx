@@ -11,7 +11,7 @@ interface navibarProps {
 }
 
 const NavigationBar: React.FC<navibarProps> = (props) => {
-  const { fullscreen } = useContext(fullScreenContext);
+  const { fullscreen } = useContext<any>(fullScreenContext);
   const headerStyle = {
     headerOpacity: 0,
   };

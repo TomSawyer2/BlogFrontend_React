@@ -25,26 +25,16 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
               e.nativeEvent.stopImmediatePropagation();
             }}
           >
-            <div
-              className={
-                !props.fullscreen
-                  ? style.articleBrief
-                  : style.articleContent_header
-              }
-            >
-              <span className={style.title}>{props.title}</span>
-              <span className={style.brief}>{props.brief}</span>
-              <span className={style.tag}>{props.tags}</span>
+            <div className={style.articleContent_header}>
+              <span className={style.title_fs}>{props.title}</span>
+              <span className={style.brief_fs}>{props.brief}</span>
+              <span className={style.tag_fs}>{props.tags}</span>
             </div>
             <ArticleContent id={props.id} isVisible={props.isVisible} />
           </div>
         </div>
       ) : (
-        <div
-          className={
-            !props.fullscreen ? style.articleBrief : style.articleContent_header
-          }
-        >
+        <div className={style.articleBrief}>
           <span className={style.title}>{props.title}</span>
           <span className={style.brief}>{props.brief}</span>
           <span className={style.tag}>{props.tags}</span>
