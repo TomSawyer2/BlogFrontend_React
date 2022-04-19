@@ -1,5 +1,11 @@
-import { fullScreenContext } from '@/pages/home/home';
-import { forwardRef, useContext, useImperativeHandle, useState } from 'react';
+import { fullpageContext, fullScreenContext } from '@/pages/home/home';
+import {
+  forwardRef,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from 'react';
 import ArticleBrief from './ArticleBrief';
 import Circle from './Circle';
 import style from './index.less';
@@ -11,6 +17,7 @@ interface ArticleProps {
   brief: string;
   tags: string[];
   id: number;
+  fullPageApi: any;
 }
 
 const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
@@ -18,6 +25,10 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
     handleChange,
   }));
   const [visible, setVisible] = useState<boolean>(props.mykey === 0);
+  const { fullpageApi, setFullpageApi } = useContext<any>(fullpageContext);
+  useEffect((): void => {
+    setFullpageApi(props.fullPageApi);
+  }, [props.fullPageApi]);
   const handleChange = (state: Boolean) => {
     state
       ? setVisible(true)

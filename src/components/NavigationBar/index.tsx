@@ -1,9 +1,14 @@
-import { fullScreenContext } from '@/pages/home/home';
+import {
+  articlesContext,
+  fullpageContext,
+  fullScreenContext,
+} from '@/pages/home/home';
 import { Layout, Menu } from 'antd';
 const { Header } = Layout;
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { history } from 'umi';
 import style from './index.css';
+import { Input as Search } from 'antd';
 
 interface navibarProps {
   offsetTop: number;
@@ -11,6 +16,7 @@ interface navibarProps {
 }
 
 const NavigationBar: React.FC<navibarProps> = (props) => {
+  const { fullpageApi, setFullpageApi } = useContext<any>(fullpageContext);
   const { fullscreen } = useContext<any>(fullScreenContext);
   const headerStyle = {
     headerOpacity: 0,
@@ -26,6 +32,27 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
     const route = path[e.key];
     history.push(route);
   };
+
+  const { articles } = useContext<any>(articlesContext);
+  const [titles, setTitles] = useState<any[]>([]);
+  useEffect((): void => {
+    if (articles.length > 0) {
+      setTitles(
+        // articles.reduce((prev: any, curr: any) => {
+        //   return [...prev, { value: curr.title }];
+        // }, []),
+        articles.map((item: any) => item.title),
+      );
+    }
+  }, [articles]);
+
+  const handleSearch = (e: any) => {
+    const searchEvent = e.target.value;
+    if (titles.indexOf(searchEvent) !== -1) {
+      fullpageApi?.moveTo(encodeURIComponent(searchEvent));
+    }
+  };
+
   return (
     <Header
       className={fullscreen ? style.navibar_hidden : style.navibar}
@@ -41,6 +68,14 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
         defaultSelectedKeys={[tab.toString()]}
         style={{ display: 'flex', justifyContent: 'flex-end' }}
       >
+        <Menu.Item disabled style={{ cursor: 'default' }}>
+          <Search
+            style={{ width: '300px', cursor: 'text' }}
+            placeholder="搜索文章"
+            allowClear
+            onPressEnter={handleSearch}
+          />
+        </Menu.Item>
         <Menu.Item key="1" style={{ padding: '0 30px' }}>
           首页
         </Menu.Item>

@@ -10,7 +10,11 @@ import {
 } from 'react';
 import Request from '@/apis/request';
 import useDynamicRefs from 'use-dynamic-refs';
-import { fullScreenContext } from '@/pages/home/home';
+import {
+  articlesContext,
+  fullpageContext,
+  fullScreenContext,
+} from '@/pages/home/home';
 
 const request = new Request();
 const getArticles = async () => {
@@ -19,10 +23,9 @@ const getArticles = async () => {
 };
 
 const MainArticles: React.FC<any> = () => {
-  const [articles, setArticles] = useState<any>([]);
+  const { articles, setArticles } = useContext<any>(articlesContext);
   const [render, setRender] = useState<boolean>(false);
-  const { fullscreen } = useContext(fullScreenContext);
-
+  const { fullscreen } = useContext<any>(fullScreenContext);
   const [getRef, setRef] = useDynamicRefs();
   useEffect(() => {
     const fetchArticles = async () => {
@@ -38,6 +41,7 @@ const MainArticles: React.FC<any> = () => {
     <ReactFullpage
       fadingEffect
       animateAnchor
+      menu
       anchors={articles.map((item: any) => encodeURIComponent(item.title))}
       onLeave={(origin: any, destination: any) => {
         if (fullscreen) return false;
@@ -50,7 +54,7 @@ const MainArticles: React.FC<any> = () => {
         ).current;
         ref2.handleChange(true);
       }}
-      render={() => {
+      render={({ state, fullpageApi }) => {
         return (
           <div>
             {articles.map(
@@ -74,6 +78,7 @@ const MainArticles: React.FC<any> = () => {
                     tags={article.tags}
                     key={article.id}
                     ref={setRef(idx.toString()) as LegacyRef<HTMLDivElement>}
+                    fullPageApi={fullpageApi}
                   />
                 );
               },
