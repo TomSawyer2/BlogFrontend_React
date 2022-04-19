@@ -20,7 +20,7 @@ const getArticles = async () => {
 
 const MainArticles: React.FC<any> = () => {
   const [articles, setArticles] = useState<any>([]);
-  const [render, setRender] = useState<Boolean>(false);
+  const [render, setRender] = useState<boolean>(false);
   const { fullscreen } = useContext(fullScreenContext);
 
   const [getRef, setRef] = useDynamicRefs();

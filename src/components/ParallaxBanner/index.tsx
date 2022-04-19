@@ -35,7 +35,7 @@ const ParallaxBanner: React.FC<any> = () => {
         <h1>TomSawyer2's Blog</h1>
       </div>
       <div className={styles.text}>
-        <h1>文本1</h1>
+        <h1>Github: TomSawyer2</h1>
       </div>
 
       <div
@@ -43,10 +43,10 @@ const ParallaxBanner: React.FC<any> = () => {
         style={{ backgroundImage: `url(${image2})` }}
       ></div>
       <div className={styles.heading}>
-        <h1>文本2</h1>
+        <h1 style={{ color: '#ffffffb5' }}>Design & Develop by TomSawyer2</h1>
       </div>
       <div className={styles.text}>
-        <h1>文本3</h1>
+        <h1>Gitee: hanserena</h1>
       </div>
 
       <div
@@ -54,18 +54,21 @@ const ParallaxBanner: React.FC<any> = () => {
         style={{ backgroundImage: `url(${image3})` }}
       ></div>
       <div className={styles.heading}>
-        <h1>文本4</h1>
+        <h1 style={{ color: '#ffffffb5' }}>Created by React & Umi</h1>
       </div>
       <div className={styles.text}>
-        <h1>文本5</h1>
+        <h1>tomsawyer2@foxmail.com</h1>
       </div>
 
       <div
         className={styles.image}
         style={{ backgroundImage: `url(${image4})`, height: '120vh' }}
       ></div>
-      <div className={styles.heading}>
-        <h1 id="lastText">进入博客</h1>
+      <div
+        className={styles.heading}
+        style={{ display: 'flex', flexDirection: 'column' }}
+      >
+        <i id="lastText" className={styles.down}></i>
       </div>
     </div>
   );
