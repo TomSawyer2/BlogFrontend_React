@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Request from '@/apis/request';
 import Markdown from 'react-markdown';
 import styles from './ArticleContent.less';
+import LoadingEffect from '../Loading/Loading';
 
 const request = new Request();
 const getArticleById = async (id: number) => {
@@ -29,7 +30,7 @@ const ArticleContent: React.FC<ArticleContentProps> = (props) => {
   }, [props.isVisible]);
   return (
     <div className={styles.articleContent}>
-      {render ? <Markdown children={article.content} /> : <span>Loading</span>}
+      {render ? <Markdown children={article.content} /> : <LoadingEffect />}
     </div>
   );
 };

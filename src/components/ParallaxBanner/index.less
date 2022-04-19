@@ -1,5 +1,5 @@
 .shell {
-  height: 100vh;
+  height: 120vh;
   overflow-x: hidden;
   perspective: 3px;
 }
@@ -16,6 +16,9 @@
   background-size: cover;
   height: 100vh;
   z-index: -1;
+  animation: fade-in;
+  animation-duration: 0.8s;
+  -webkit-animation: fade-in 0.8s;
 }
 .text {
   height: 50vh;
@@ -29,7 +32,44 @@
   transform: translateY(-30vh) translateZ(1px);
   color: #fff;
   font-size: 30px;
+  animation: fade-in;
+  animation-duration: 0.8s;
+  -webkit-animation: fade-in 0.8s;
 }
 ::-webkit-scrollbar {
   width: 0px;
+}
+
+@keyframes fade-in {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  40% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  40% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }

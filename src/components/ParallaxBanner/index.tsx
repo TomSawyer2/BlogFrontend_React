@@ -62,7 +62,7 @@ const ParallaxBanner: React.FC<any> = () => {
 
       <div
         className={styles.image}
-        style={{ backgroundImage: `url(${image4})`, height: '110vh' }}
+        style={{ backgroundImage: `url(${image4})`, height: '120vh' }}
       ></div>
       <div className={styles.heading}>
         <h1 id="lastText">进入博客</h1>

@@ -1,0 +1,45 @@
+svg {
+  width: 0;
+  height: 0;
+}
+
+.loader {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  filter: url(#gooey);
+  margin: auto;
+}
+
+.loader span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  animation: animate 4s ease-in-out infinite;
+  animation-delay: calc(0.2s * var(--i));
+}
+
+.loader span:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* 作用：小方块变成圆*/
+  box-shadow: 0 0 30px #49bef4;
+  background: linear-gradient(#fce4ec, #40c2ff);
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
