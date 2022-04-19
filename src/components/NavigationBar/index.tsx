@@ -3,7 +3,7 @@ import {
   fullpageContext,
   fullScreenContext,
 } from '@/pages/home/home';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, AutoComplete } from 'antd';
 const { Header } = Layout;
 import React, { useContext, useEffect, useState } from 'react';
 import { history } from 'umi';
@@ -35,24 +35,36 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
 
   const { articles } = useContext<any>(articlesContext);
   const [titles, setTitles] = useState<any[]>([]);
+  const [titlesMap, setTitlesMap] = useState<any[]>([]);
   useEffect((): void => {
     if (articles.length > 0) {
-      setTitles(
-        // articles.reduce((prev: any, curr: any) => {
-        //   return [...prev, { value: curr.title }];
-        // }, []),
-        articles.map((item: any) => item.title),
+      setTitles(articles.map((item: any) => item.title));
+      setTitlesMap(
+        articles.reduce((prev: any, curr: any) => {
+          return [...prev, { value: curr.title }];
+        }, []),
       );
     }
   }, [articles]);
 
   const handleSearch = (e: any) => {
     const searchEvent = e.target.value;
-    if (titles.indexOf(searchEvent) !== -1) {
-      fullpageApi?.moveTo(encodeURIComponent(searchEvent));
+    if (titles.some((item: any) => item.includes(searchEvent))) {
+      const index = titles.findIndex((item: any) => item.includes(searchEvent));
+      fullpageApi?.moveTo(encodeURIComponent(titles[index]));
+      setTitlesMap(
+        articles.reduce((prev: any, curr: any) => {
+          return [...prev, { value: curr.title }];
+        }, []),
+      );
+      const searchInput = document.getElementById('searchInput');
+      searchInput?.blur();
     }
   };
 
+  const handleFilter = (e: any) => {
+    setTitlesMap(titlesMap.filter((item: any) => item.value.includes(e)));
+  };
   return (
     <Header
       className={fullscreen ? style.navibar_hidden : style.navibar}
@@ -68,13 +80,21 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
         defaultSelectedKeys={[tab.toString()]}
         style={{ display: 'flex', justifyContent: 'flex-end' }}
       >
-        <Menu.Item disabled style={{ cursor: 'default' }}>
-          <Search
-            style={{ width: '300px', cursor: 'text' }}
-            placeholder="搜索文章"
-            allowClear
-            onPressEnter={handleSearch}
-          />
+        <Menu.Item key="search_input" disabled style={{ cursor: 'default' }}>
+          <AutoComplete
+            options={titlesMap}
+            style={{ width: 300 }}
+            onSearch={handleFilter}
+          >
+            <Search
+              style={{ width: '300px', cursor: 'text' }}
+              placeholder="搜索文章"
+              size="large"
+              allowClear
+              onPressEnter={handleSearch}
+              id="searchInput"
+            />
+          </AutoComplete>
         </Menu.Item>
         <Menu.Item key="1" style={{ padding: '0 30px' }}>
           首页

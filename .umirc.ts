@@ -20,6 +20,6 @@ export default defineConfig({
   title: '博客 - TomSawyer2',
   favicon: './favicon.ico',
   fastRefresh: {},
-  // mfsu: {},
+  mfsu: {},
   // dynamicImport: {},
 });
