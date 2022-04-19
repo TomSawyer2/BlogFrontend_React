@@ -1,57 +1,74 @@
-import React, { useEffect } from 'react';
-import { Parallax } from 'react-parallax';
+import React, { useEffect, useState } from 'react';
 import { history } from 'umi';
+import styles from './index.less';
 
-const insideStyles: React.CSSProperties = {
-  color: 'white',
-  fontSize: '60px',
-  fontFamily: 'sans-serif',
-  padding: 20,
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%,-50%)',
-  textAlign: 'center',
-};
-const image =
-  'https://upload-bbs.mihoyo.com/upload/2022/03/31/307917969/9d0401ffb3fb0bb6e2884582312fb240_2463105962140725619.jpg?x-oss-process=image/auto-orient,0/interlace,1/format,jpg';
+const image1 =
+  'https://upload-bbs.mihoyo.com/upload/2022/04/12/18643246/28371a43441da291da659d921a8637cc_7872314073706548427.jpg';
+const image2 =
+  'https://upload-bbs.mihoyo.com/upload/2021/09/19/11109110/0545afad441b9e40858fdeee03de7541_5412233907688564971.jpg';
+const image3 =
+  'https://upload-bbs.mihoyo.com/upload/2022/02/16/11114904/8c9233093ca415649bea16b93610bbb2_4881524932476610936.jpg';
+
+const image4 =
+  'https://upload-bbs.mihoyo.com/upload/2021/10/19/246137258/d58272149b7429cd5c667cb757a3b237_1388123535334324587.jpg';
 
 const ParallaxBanner: React.FC<any> = () => {
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {};
+  useEffect((): void => {
+    const lastText: any = document.getElementById('lastText');
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setTimeout(() => {
+          history.push('/home');
+        }, 2000);
+      }
+    });
+    if (lastText !== null) io.observe(lastText);
   }, []);
 
-  const handleScroll = () => {
-    if (window.scrollY >= window.innerHeight / 1.5) {
-      setTimeout(() => {
-        history.push('/home');
-      }, 1000);
-    }
-  };
-  const content = (
-    <>
-      <div id="parallaxBanner">
-        <Parallax
-          bgImage={image}
-          strength={800}
-          bgStyle={{
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed',
-            zoom: 1,
-            minWidth: '1000px',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 0',
-          }}
-        >
-          <div style={{ height: '180vh' }}>
-            <div style={insideStyles}>TomSawyer2's Blog</div>
-          </div>
-        </Parallax>
+  return (
+    <div className={styles.shell}>
+      <div
+        className={styles.image}
+        style={{ backgroundImage: `url(${image1})` }}
+      ></div>
+      <div className={styles.heading}>
+        <h1>TomSawyer2's Blog</h1>
       </div>
-    </>
+      <div className={styles.text}>
+        <h1>文本1</h1>
+      </div>
+
+      <div
+        className={styles.image}
+        style={{ backgroundImage: `url(${image2})` }}
+      ></div>
+      <div className={styles.heading}>
+        <h1>文本2</h1>
+      </div>
+      <div className={styles.text}>
+        <h1>文本3</h1>
+      </div>
+
+      <div
+        className={styles.image}
+        style={{ backgroundImage: `url(${image3})` }}
+      ></div>
+      <div className={styles.heading}>
+        <h1>文本4</h1>
+      </div>
+      <div className={styles.text}>
+        <h1>文本5</h1>
+      </div>
+
+      <div
+        className={styles.image}
+        style={{ backgroundImage: `url(${image4})`, height: '110vh' }}
+      ></div>
+      <div className={styles.heading}>
+        <h1 id="lastText">进入博客</h1>
+      </div>
+    </div>
   );
-  return content;
 };
 
 export default ParallaxBanner;
