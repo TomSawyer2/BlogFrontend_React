@@ -1,5 +1,4 @@
 import { color16 } from '@/utils/randomColor';
-import { useState } from 'react';
 import style from './index.less';
 
 interface CircleProps {
