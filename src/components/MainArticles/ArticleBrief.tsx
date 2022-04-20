@@ -4,7 +4,7 @@ import style from './ArticleBrief.css';
 import MarkNav from 'markdown-navbar';
 import 'markdown-navbar/dist/navbar.css';
 import { Anchor } from 'antd';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
 
 interface ArticleBriefProps {
   title: string;
@@ -21,12 +21,18 @@ export const articleNavContext = createContext({});
 const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
   // const mainColor = getDominantColor(document.getElementById(`img${props.mykey}`)).r;
   const [articleNav, setArticleNav] = useState<any>('');
-
+  const articleNavContextMemo = useMemo(
+    () => ({
+      articleNav,
+      setArticleNav,
+    }),
+    [articleNav],
+  );
   return (
     <>
       <Bubbles mainColor={'#66ccff'} />
       {props.fullscreen ? (
-        <articleNavContext.Provider value={{ articleNav, setArticleNav }}>
+        <articleNavContext.Provider value={articleNavContextMemo}>
           <div className={style.articleContent}>
             <div
               onClick={(e) => {
@@ -40,6 +46,7 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
                   source={articleNav}
                   headingTopOffset={80}
                   className={style.markNav_inner}
+                  id="mdnavbar"
                 />
               </Anchor>
             </div>

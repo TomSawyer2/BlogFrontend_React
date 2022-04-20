@@ -1,11 +1,5 @@
-import { fullpageContext, fullScreenContext } from '@/pages/home/home';
-import {
-  forwardRef,
-  useContext,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from 'react';
+import { fullScreenContext } from '@/pages/home/home';
+import { forwardRef, useContext, useImperativeHandle, useState } from 'react';
 import ArticleBrief from './ArticleBrief';
 import Circle from './Circle';
 import style from './index.less';
@@ -17,7 +11,6 @@ interface ArticleProps {
   brief: string;
   tags: string[];
   id: number;
-  fullPageApi: any;
 }
 
 const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
@@ -25,10 +18,6 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
     handleChange,
   }));
   const [visible, setVisible] = useState<boolean>(props.mykey === 0);
-  const { fullpageApi, setFullpageApi } = useContext<any>(fullpageContext);
-  useEffect((): void => {
-    setFullpageApi(props.fullPageApi);
-  }, [props.fullPageApi]);
   const handleChange = (state: Boolean) => {
     state
       ? setVisible(true)
@@ -38,8 +27,22 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
   };
   const { fullscreen, setFullscreen } = useContext<any>(fullScreenContext);
   const handleClick = () => {
+    if (!fullscreen) window?.fullpage_api?.setAllowScrolling(false);
+    else window?.fullpage_api?.setAllowScrolling(true);
     setFullscreen(!fullscreen);
   };
+
+  const isOdd = props.mykey % 2 === 0;
+  const handleFullscreen: any = () => {
+    if (fullscreen) {
+      return style.fullscreen;
+    } else if (isOdd) {
+      return style.circle_left;
+    } else {
+      return style.circle_right;
+    }
+  };
+  // return useMemo(() => {
   const renderArr = [
     <Circle
       imgUrl={props.imgUrl}
@@ -56,16 +59,6 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
       isVisible={visible}
     />,
   ];
-  const isOdd = props.mykey % 2 === 0;
-  const handleFullscreen: any = () => {
-    if (fullscreen) {
-      return style.fullscreen;
-    } else if (isOdd) {
-      return style.circle_left;
-    } else {
-      return style.circle_right;
-    }
-  };
   return (
     <div className="section">
       <div
@@ -86,6 +79,7 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
       </div>
     </div>
   );
+  // }, [fullscreen, setFullscreen, fullpageApi, setFullpageApi]);
 });
 
 export default Article;

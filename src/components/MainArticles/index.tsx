@@ -31,8 +31,9 @@ const MainArticles: React.FC<any> = () => {
       fadingEffect
       animateAnchor
       anchors={articles.map((item: any) => encodeURIComponent(item.title))}
+      scrollOverflow={true}
+      normalScrollElements={'#articlemd, #mdnavbar, .markdown-navigation'}
       onLeave={(origin: any, destination: any) => {
-        if (fullscreen) return false;
         const ref1: any = (
           getRef(origin.index.toString()) as RefObject<HTMLDivElement>
         ).current;
@@ -42,7 +43,7 @@ const MainArticles: React.FC<any> = () => {
         ).current;
         ref2.handleChange(true);
       }}
-      render={({ state, fullpageApi }: any) => {
+      render={() => {
         return (
           <div>
             {articles.map(
@@ -66,7 +67,6 @@ const MainArticles: React.FC<any> = () => {
                     tags={article.tags}
                     key={article.id}
                     ref={setRef(idx.toString()) as LegacyRef<HTMLDivElement>}
-                    fullPageApi={fullpageApi}
                   />
                 );
               },

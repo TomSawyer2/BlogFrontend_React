@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import Request from '@/apis/request';
 import Markdown from 'react-markdown';
 import styles from './ArticleContent.less';
@@ -35,7 +35,7 @@ const ArticleContent: React.FC<ArticleContentProps> = (props) => {
     }
   }, [props.isVisible]);
   return (
-    <div className={styles.articleContent}>
+    <div className={styles.articleContent} id="articlemd">
       {render ? (
         <Markdown
           children={article.content}
