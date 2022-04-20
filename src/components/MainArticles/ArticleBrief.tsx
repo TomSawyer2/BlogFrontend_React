@@ -1,6 +1,10 @@
 import ArticleContent from '../Article/ArticleContent';
 import Bubbles from '../Bubble';
 import style from './ArticleBrief.css';
+import MarkNav from 'markdown-navbar';
+import 'markdown-navbar/dist/navbar.css';
+import { Anchor } from 'antd';
+import { createContext, useContext, useState } from 'react';
 
 interface ArticleBriefProps {
   title: string;
@@ -11,28 +15,51 @@ interface ArticleBriefProps {
   id: number;
   isVisible: boolean;
 }
+
+export const articleNavContext = createContext({});
+
 const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
   // const mainColor = getDominantColor(document.getElementById(`img${props.mykey}`)).r;
+  const [articleNav, setArticleNav] = useState<any>('');
+
   return (
     <>
       <Bubbles mainColor={'#66ccff'} />
       {props.fullscreen ? (
-        <div className={style.articleContent}>
-          <div
-            className={style.articleContent_box}
-            onClick={(e) => {
-              e.stopPropagation();
-              e.nativeEvent.stopImmediatePropagation();
-            }}
-          >
-            <div className={style.articleContent_header}>
-              <span className={style.title_fs}>{props.title}</span>
-              <span className={style.brief_fs}>{props.brief}</span>
-              <span className={style.tag_fs}>{props.tags}</span>
+        <articleNavContext.Provider value={{ articleNav, setArticleNav }}>
+          <div className={style.articleContent}>
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                e.nativeEvent.stopImmediatePropagation();
+              }}
+              className={style.markNav}
+            >
+              <Anchor>
+                <MarkNav
+                  source={articleNav}
+                  headingTopOffset={80}
+                  className={style.markNav_inner}
+                />
+              </Anchor>
             </div>
-            <ArticleContent id={props.id} isVisible={props.isVisible} />
+
+            <div
+              className={style.articleContent_box}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.nativeEvent.stopImmediatePropagation();
+              }}
+            >
+              <div className={style.articleContent_header}>
+                <span className={style.title_fs}>{props.title}</span>
+                <span className={style.brief_fs}>{props.brief}</span>
+                <span className={style.tag_fs}>{props.tags}</span>
+              </div>
+              <ArticleContent id={props.id} isVisible={props.isVisible} />
+            </div>
           </div>
-        </div>
+        </articleNavContext.Provider>
       ) : (
         <div className={style.articleBrief}>
           <span className={style.title}>{props.title}</span>

@@ -79,6 +79,7 @@
   width: 100vw;
   display: flex;
   justify-content: center;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
 }
 
 .articleContent_box {
@@ -90,6 +91,7 @@
   -webkit-animation: fade-in-box 1s; 
   cursor: auto;
   overflow: scroll;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
 }
 
 .articleContent_header {
@@ -145,4 +147,24 @@
   100% {
     opacity: 1;
   }
+}
+
+.markNav {
+  position: absolute;
+  width: 150px;
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  left: calc((15vw - 150px) / 2);
+  animation: fade-in; 
+  animation-duration: 1.5s; 
+  -webkit-animation: fade-in 1.5s; 
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+}
+
+.markNav_inner {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+  background-color: RGB(255, 255, 255, 0.7);
+  box-shadow: 0 0 5px 1px;
+  max-height: calc(100vh - 40px);
+  overflow: scroll !important;
 }

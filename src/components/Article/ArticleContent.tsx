@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Request from '@/apis/request';
 import Markdown from 'react-markdown';
 import styles from './ArticleContent.less';
 import LoadingEffect from '../Loading/Loading';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import remarkGfm from 'remark-gfm';
+import { articleNavContext } from '../MainArticles/ArticleBrief';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 const request = new Request();
 const getArticleById = async (id: number) => {
@@ -20,12 +21,15 @@ interface ArticleContentProps {
 const ArticleContent: React.FC<ArticleContentProps> = (props) => {
   const [article, setArticle] = useState<any>({});
   const [render, setRender] = useState<boolean>(false);
+  const { articleNav, setArticleNav } = useContext<any>(articleNavContext);
+
   useEffect(() => {
     if (props.isVisible) {
       const fetchArticles = async () => {
         const result = await getArticleById(props.id);
         setArticle(result);
         setRender(true);
+        setArticleNav(result.content);
       };
       fetchArticles();
     }
