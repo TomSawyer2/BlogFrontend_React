@@ -21,5 +21,5 @@ export default defineConfig({
   favicon: './favicon.ico',
   fastRefresh: {},
   mfsu: {},
-  // dynamicImport: {},
+  dynamicImport: {},
 });
