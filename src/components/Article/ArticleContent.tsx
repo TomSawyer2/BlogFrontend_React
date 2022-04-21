@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Request from '@/apis/request';
 import Markdown from 'react-markdown';
 import styles from './ArticleContent.less';

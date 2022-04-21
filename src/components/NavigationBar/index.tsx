@@ -9,25 +9,10 @@ import { Input as Search } from 'antd';
 interface navibarProps {
   offsetTop: number;
   tab?: number;
+  showSearch?: boolean;
 }
 
-const NavigationBar: React.FC<navibarProps> = (props) => {
-  const { fullscreen } = useContext<any>(fullScreenContext);
-  const headerStyle = {
-    headerOpacity: 0,
-  };
-  const { offsetTop } = props;
-  const height = window.innerHeight;
-  if (offsetTop > window.innerHeight * 1.5) {
-    headerStyle.headerOpacity = offsetTop / (height * 1.5) - 1;
-  }
-  const tab = props.tab ?? 1;
-  const path = ['', '/', '/home', '/tags'];
-  const handleClick = (e: any) => {
-    const route = path[e.key];
-    history.push(route);
-  };
-
+const SearchBar: React.FC<any> = () => {
   const { articles } = useContext<any>(articlesContext);
   const [titles, setTitles] = useState<string[]>([]);
   const [titlesMap, setTitlesMap] = useState<any[]>([]);
@@ -67,6 +52,43 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
   }, [titlesMap]);
 
   return (
+    <Menu.Item key="search_input" disabled style={{ cursor: 'default' }}>
+      <AutoComplete
+        options={searchItems}
+        style={{ width: 300 }}
+        onSearch={handleFilter}
+      >
+        <Search
+          style={{ width: '300px', cursor: 'text' }}
+          placeholder="搜索文章"
+          size="large"
+          allowClear
+          onPressEnter={handleSearch}
+          id="searchInput"
+        />
+      </AutoComplete>
+    </Menu.Item>
+  );
+};
+
+const NavigationBar: React.FC<navibarProps> = (props) => {
+  const { fullscreen } = useContext<any>(fullScreenContext);
+  const headerStyle = {
+    headerOpacity: 0,
+  };
+  const { offsetTop } = props;
+  const height = window.innerHeight;
+  if (offsetTop > window.innerHeight * 1.5) {
+    headerStyle.headerOpacity = offsetTop / (height * 1.5) - 1;
+  }
+  const tab = props.tab ?? 1;
+  const path = ['', '/', '/home', '/tags'];
+  const handleClick = (e: any) => {
+    const route = path[e.key];
+    history.push(route);
+  };
+
+  return (
     <Header
       className={fullscreen ? style.navibar_hidden : style.navibar}
       style={{
@@ -81,22 +103,7 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
         defaultSelectedKeys={[tab.toString()]}
         style={{ display: 'flex', justifyContent: 'flex-end' }}
       >
-        <Menu.Item key="search_input" disabled style={{ cursor: 'default' }}>
-          <AutoComplete
-            options={searchItems}
-            style={{ width: 300 }}
-            onSearch={handleFilter}
-          >
-            <Search
-              style={{ width: '300px', cursor: 'text' }}
-              placeholder="搜索文章"
-              size="large"
-              allowClear
-              onPressEnter={handleSearch}
-              id="searchInput"
-            />
-          </AutoComplete>
-        </Menu.Item>
+        {props.showSearch ? <SearchBar /> : null}
         <Menu.Item key="1" style={{ padding: '0 30px' }}>
           首页
         </Menu.Item>

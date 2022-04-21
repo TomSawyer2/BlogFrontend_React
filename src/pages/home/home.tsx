@@ -17,7 +17,7 @@ const Page: React.FC<any> = () => {
   return (
     <fullScreenContext.Provider value={{ fullscreen, setFullscreen }}>
       <articlesContext.Provider value={articlesContextMemo}>
-        <NavigationBar offsetTop={1000000} tab={2} />
+        <NavigationBar offsetTop={1000000} tab={2} showSearch={true} />
         <MainArticles />
       </articlesContext.Provider>
     </fullScreenContext.Provider>

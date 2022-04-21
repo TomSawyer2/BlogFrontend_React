@@ -45,8 +45,7 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
 
   useEffect(() => {
     if (!props.fullscreen) setQRCodeStatus(false);
-  }),
-    [props.fullscreen];
+  }, [props.fullscreen]);
 
   return (
     <>
