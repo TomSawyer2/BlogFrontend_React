@@ -33,15 +33,15 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
 
   const isOdd = props.mykey % 2 === 0;
   const handleFullscreen: any = () => {
-    if (fullscreen) {
-      return style.fullscreen;
-    } else if (isOdd) {
+    if (isOdd) {
       return style.circle_left;
     } else {
       return style.circle_right;
     }
   };
-  // return useMemo(() => {
+  const handleTransform: any = () => {
+    if (fullscreen) return 'translateX(0px)';
+  };
   const renderArr = [
     <Circle
       imgUrl={props.imgUrl}
@@ -71,14 +71,13 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
         <div
           className={handleFullscreen()}
           onClick={handleClick}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', transform: handleTransform() }}
         >
           {isOdd ? renderArr : renderArr.reverse()}
         </div>
       </div>
     </div>
   );
-  // }, [fullscreen, setFullscreen, fullpageApi, setFullpageApi]);
 });
 
 export default Article;
