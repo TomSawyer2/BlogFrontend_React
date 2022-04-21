@@ -3,7 +3,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import { LegacyRef, RefObject, useContext, useEffect, useState } from 'react';
 import Request from '@/apis/request';
 import useDynamicRefs from 'use-dynamic-refs';
-import { articlesContext, fullScreenContext } from '@/pages/home/home';
+import { articlesContext } from '@/pages/home/home';
 
 const request = new Request();
 const getArticles = async () => {
@@ -14,7 +14,6 @@ const getArticles = async () => {
 const MainArticles: React.FC<any> = () => {
   const { articles, setArticles } = useContext<any>(articlesContext);
   const [render, setRender] = useState<boolean>(false);
-  const { fullscreen } = useContext<any>(fullScreenContext);
   const [getRef, setRef] = useDynamicRefs();
   useEffect(() => {
     const fetchArticles = async () => {
@@ -32,7 +31,9 @@ const MainArticles: React.FC<any> = () => {
       animateAnchor
       anchors={articles.map((item: any) => encodeURIComponent(item.title))}
       scrollOverflow={true}
-      normalScrollElements={'#articlemd, #mdnavbar, .markdown-navigation'}
+      normalScrollElements={
+        '#articlemd, #mdnavbar, .markdown-navigation, .ant-select-dropdown'
+      }
       onLeave={(origin: any, destination: any) => {
         const ref1: any = (
           getRef(origin.index.toString()) as RefObject<HTMLDivElement>

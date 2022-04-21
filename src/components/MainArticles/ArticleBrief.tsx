@@ -4,7 +4,7 @@ import style from './ArticleBrief.css';
 import MarkNav from 'markdown-navbar';
 import 'markdown-navbar/dist/navbar.css';
 import { Anchor } from 'antd';
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 
 interface ArticleBriefProps {
   title: string;
@@ -28,6 +28,16 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
     }),
     [articleNav],
   );
+  const [hElments, sethElements] = useState<any>([]);
+  useEffect(() => {
+    const hElments = [
+      ...document.getElementsByTagName('h1'),
+      ...document.getElementsByTagName('h2'),
+      ...document.getElementsByTagName('h3'),
+      ...document.getElementsByTagName('h4'),
+    ];
+    sethElements(Array.from(hElments));
+  }, [articleNav]);
   return (
     <>
       <Bubbles mainColor={'#66ccff'} />
@@ -41,14 +51,26 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
               }}
               className={style.markNav}
             >
-              <Anchor>
+              {/* <Anchor>
                 <MarkNav
                   source={articleNav}
                   headingTopOffset={80}
                   className={style.markNav_inner}
                   id="mdnavbar"
+                  onNavItemClick={(
+                    event: Event,
+                    elememt: Element,
+                    hashValue: string,
+                  ) => {
+                    hElments.forEach((item: any) => {
+                      if (item.getAttribute('data-id') === hashValue) {
+                        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        return;
+                      }
+                    });
+                  }}
                 />
-              </Anchor>
+              </Anchor> */}
             </div>
 
             <div

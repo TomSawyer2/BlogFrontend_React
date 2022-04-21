@@ -27,8 +27,7 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
   };
   const { fullscreen, setFullscreen } = useContext<any>(fullScreenContext);
   const handleClick = () => {
-    if (!fullscreen) window?.fullpage_api?.setAllowScrolling(false);
-    else window?.fullpage_api?.setAllowScrolling(true);
+    window?.fullpage_api?.setAllowScrolling(fullscreen);
     setFullscreen(!fullscreen);
   };
 

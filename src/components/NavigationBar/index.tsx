@@ -1,7 +1,7 @@
 import { articlesContext, fullScreenContext } from '@/pages/home/home';
 import { Layout, Menu, AutoComplete } from 'antd';
 const { Header } = Layout;
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { history } from 'umi';
 import style from './index.css';
 import { Input as Search } from 'antd';
@@ -29,8 +29,9 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
   };
 
   const { articles } = useContext<any>(articlesContext);
-  const [titles, setTitles] = useState<any[]>([]);
+  const [titles, setTitles] = useState<string[]>([]);
   const [titlesMap, setTitlesMap] = useState<any[]>([]);
+  const [searchItems, setSearchItems] = useState<any[]>([]);
   useEffect((): void => {
     if (articles.length > 0) {
       setTitles(articles.map((item: any) => item.title));
@@ -52,63 +53,65 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
           return [...prev, { value: curr.title }];
         }, []),
       );
-      const searchInput = document.getElementById('searchInput');
-      searchInput?.blur();
     }
+    const searchInput = document.getElementById('searchInput');
+    searchInput?.blur();
   };
 
   const handleFilter = (e: any) => {
-    setTitlesMap(titlesMap.filter((item: any) => item.value.includes(e)));
+    setSearchItems(titlesMap.filter((item: any) => item.value.includes(e)));
   };
 
-  return useMemo(() => {
-    return (
-      <Header
-        className={fullscreen ? style.navibar_hidden : style.navibar}
-        style={{
-          opacity: headerStyle.headerOpacity,
-          backgroundColor: 'white',
-        }}
+  useEffect((): void => {
+    handleFilter('');
+  }, [titlesMap]);
+
+  return (
+    <Header
+      className={fullscreen ? style.navibar_hidden : style.navibar}
+      style={{
+        opacity: headerStyle.headerOpacity,
+        backgroundColor: 'white',
+      }}
+    >
+      <Menu
+        onClick={handleClick}
+        theme="light"
+        mode="horizontal"
+        defaultSelectedKeys={[tab.toString()]}
+        style={{ display: 'flex', justifyContent: 'flex-end' }}
       >
-        <Menu
-          onClick={handleClick}
-          theme="light"
-          mode="horizontal"
-          defaultSelectedKeys={[tab.toString()]}
-          style={{ display: 'flex', justifyContent: 'flex-end' }}
-        >
-          <Menu.Item key="search_input" disabled style={{ cursor: 'default' }}>
-            <AutoComplete
-              options={titlesMap}
-              style={{ width: 300 }}
-              onSearch={handleFilter}
-            >
-              <Search
-                style={{ width: '300px', cursor: 'text' }}
-                placeholder="搜索文章"
-                size="large"
-                allowClear
-                onPressEnter={handleSearch}
-                id="searchInput"
-              />
-            </AutoComplete>
-          </Menu.Item>
-          <Menu.Item key="1" style={{ padding: '0 30px' }}>
-            首页
-          </Menu.Item>
-          <Menu.Item key="2" style={{ padding: '0 30px' }}>
-            全部文章
-          </Menu.Item>
-          <Menu.Item key="3" style={{ padding: '0 30px' }}>
-            标签
-          </Menu.Item>
-          <Menu.Item key="4" style={{ padding: '0 30px' }}>
-            个人中心
-          </Menu.Item>
-        </Menu>
-      </Header>
-    );
-  }, [fullscreen, articles, titlesMap, titles]);
+        <Menu.Item key="search_input" disabled style={{ cursor: 'default' }}>
+          <AutoComplete
+            options={searchItems}
+            style={{ width: 300 }}
+            onSearch={handleFilter}
+          >
+            <Search
+              style={{ width: '300px', cursor: 'text' }}
+              placeholder="搜索文章"
+              size="large"
+              allowClear
+              onPressEnter={handleSearch}
+              id="searchInput"
+            />
+          </AutoComplete>
+        </Menu.Item>
+        <Menu.Item key="1" style={{ padding: '0 30px' }}>
+          首页
+        </Menu.Item>
+        <Menu.Item key="2" style={{ padding: '0 30px' }}>
+          全部文章
+        </Menu.Item>
+        <Menu.Item key="3" style={{ padding: '0 30px' }}>
+          标签
+        </Menu.Item>
+        <Menu.Item key="4" style={{ padding: '0 30px' }}>
+          个人中心
+        </Menu.Item>
+      </Menu>
+    </Header>
+  );
 };
 
 export default NavigationBar;
