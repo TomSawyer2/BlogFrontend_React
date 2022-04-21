@@ -109,7 +109,7 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
                 setQRCodeStatus={setQRCodeStatus}
               />
             </div>
-            {QRCodeStatus ? <QRCode /> : null}
+            {QRCodeStatus ? <QRCode anchor={props.title} /> : null}
           </div>
         </articleNavContext.Provider>
       ) : (
