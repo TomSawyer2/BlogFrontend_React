@@ -5,6 +5,8 @@ import MarkNav from 'markdown-navbar';
 import 'markdown-navbar/dist/navbar.css';
 import { Anchor } from 'antd';
 import { createContext, useEffect, useMemo, useState } from 'react';
+import CircleMenu from '../CircleMenu/CircleMenu';
+import QRCode from '../QRCode/QRCode';
 
 interface ArticleBriefProps {
   title: string;
@@ -28,7 +30,7 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
     }),
     [articleNav],
   );
-  const [hElments, sethElements] = useState<any>([]);
+  const [hElements, sethElements] = useState<any>([]);
   useEffect(() => {
     const hElments = [
       ...document.getElementsByTagName('h1'),
@@ -38,6 +40,14 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
     ];
     sethElements(Array.from(hElments));
   }, [articleNav]);
+
+  const [QRCodeStatus, setQRCodeStatus] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!props.fullscreen) setQRCodeStatus(false);
+  }),
+    [props.fullscreen];
+
   return (
     <>
       <Bubbles mainColor={'#66ccff'} />
@@ -87,6 +97,19 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
               </div>
               <ArticleContent id={props.id} isVisible={props.isVisible} />
             </div>
+            <div
+              style={{ position: 'absolute', bottom: '100px', right: '100px' }}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.nativeEvent.stopImmediatePropagation();
+              }}
+            >
+              <CircleMenu
+                QRCodeStatus={QRCodeStatus}
+                setQRCodeStatus={setQRCodeStatus}
+              />
+            </div>
+            {QRCodeStatus ? <QRCode /> : null}
           </div>
         </articleNavContext.Provider>
       ) : (

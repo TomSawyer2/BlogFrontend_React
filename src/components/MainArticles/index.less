@@ -85,6 +85,16 @@
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
 }
 
+.circle_left_fs {
+  &:extend(.circle_left);
+  transform: translateX(0px) !important;
+}
+
+.circle_right_fs {
+  &:extend(.circle_right);
+  transform: translateX(0px) !important;
+}
+
 .fade-in-circle {
   visibility: hidden;
   background-color: bisque;
