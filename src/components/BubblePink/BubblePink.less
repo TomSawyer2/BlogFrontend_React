@@ -1,6 +1,6 @@
 .container {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   /* 相对定位 */
   position: relative;
 }
@@ -9,18 +9,23 @@
   width: 100%;
   height: 100%;
   /* 径向渐变 */
-  background: radial-gradient(
-    circle at 75% 30%,
-    #fff 5px,
-    #ff21c0 8%,
-    #5b5b5b 60%,
-    #ff21c0 100%
-  );
+  // background: radial-gradient(
+  //   circle at 75% 30%,
+  //   #fff 5px,
+  //   #ff21c0 8%,
+  //   #5b5b5b 60%,
+  //   #ff21c0 100%
+  // );
+  background-image: url(https://cloudreve-hanserena.oss-cn-hangzhou.aliyuncs.com/uploads/2022/04/22/bLu0kdWU_314DCDA50D826D294A889DC4453890FB.jpg);
   border-radius: 50%;
   /* 阴影 */
-  box-shadow: inset 0 0 20px #fff, inset 10px 0 46px #eaf5fc,
-    inset 80px 0 60px #efcde6, inset -20px -60px 100px #f9f6de,
-    inset 0 50px 140px #f9f6de, 0 0 90px #fff;
+  // box-shadow: inset 0 0 20px #fff, inset 10px 0 46px #eaf5fc,
+  //   inset 80px 0 60px #efcde6, inset -20px -60px 100px #f9f6de,
+  //   inset 0 50px 140px #f9f6de, 0 0 90px #fff;
+  background-repeat: no-repeat;
+  -moz-background-size: 100% 100%;
+  background-size: cover;
+  background-position: center center;
   /* 执行动画：动画名 时长 加速后减速 无限次播放 */
   animation: bubble 4s ease-in-out infinite;
 }
@@ -33,7 +38,7 @@
   position: absolute;
   left: 50%;
   margin-left: -75px;
-  bottom: -100px;
+  bottom: -40px;
   /* 一点点模糊效果 */
   filter: blur(1px);
   /* 执行动画：动画名 时长 加速后减速 无限次播放 */
@@ -48,16 +53,16 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-80px);
+    transform: translateY(-30px);
   }
 }
 /* 投影动画 */
 @keyframes shadow {
   0%,
   100% {
-    transform: scale(0.5);
+    transform: scale(0.8);
   }
   50% {
-    transform: scale(1);
+    transform: scale(0.6);
   }
 }
