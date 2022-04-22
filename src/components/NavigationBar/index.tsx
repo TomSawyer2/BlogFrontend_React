@@ -46,7 +46,11 @@ const SearchBar: React.FC = () => {
   };
 
   const handleFilter = (e: any) => {
-    setSearchItems(titlesMap.filter((item: any) => item.value.includes(e)));
+    setSearchItems(
+      titlesMap.filter((item: any) =>
+        item.value.toUpperCase().includes(e.toUpperCase()),
+      ),
+    );
   };
 
   useEffect((): void => {

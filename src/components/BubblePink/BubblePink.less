@@ -1,7 +1,6 @@
 .container {
   width: 150px;
   height: 150px;
-  /* 相对定位 */
   position: relative;
 }
 /* 泡泡 */
@@ -26,7 +25,6 @@
   -moz-background-size: 100% 100%;
   background-size: cover;
   background-position: center center;
-  /* 执行动画：动画名 时长 加速后减速 无限次播放 */
   animation: bubble 4s ease-in-out infinite;
 }
 .shadow {
@@ -34,14 +32,11 @@
   width: 150px;
   height: 40px;
   border-radius: 50%;
-  /* 绝对定位 */
   position: absolute;
   left: 50%;
   margin-left: -75px;
   bottom: -40px;
-  /* 一点点模糊效果 */
   filter: blur(1px);
-  /* 执行动画：动画名 时长 加速后减速 无限次播放 */
   animation: shadow 4s ease-in-out infinite;
 }
 
