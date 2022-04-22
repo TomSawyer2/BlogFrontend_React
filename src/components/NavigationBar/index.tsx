@@ -11,7 +11,7 @@ interface navibarProps {
   tab?: number;
 }
 
-const SearchBar: React.FC<any> = () => {
+const SearchBar: React.FC = () => {
   const { articles } = useContext<any>(articlesContext);
   const [titles, setTitles] = useState<string[]>([]);
   const [titlesMap, setTitlesMap] = useState<any[]>([]);
@@ -29,7 +29,10 @@ const SearchBar: React.FC<any> = () => {
 
   const handleSearch = (e: any) => {
     const searchEvent = e.target.value;
-    if (titles.some((item: any) => item.includes(searchEvent))) {
+    if (
+      titles.some((item: any) => item.includes(searchEvent)) &&
+      searchEvent !== ''
+    ) {
       const index = titles.findIndex((item: any) => item.includes(searchEvent));
       window?.fullpage_api?.moveTo(encodeURIComponent(titles[index]));
       setTitlesMap(
@@ -80,14 +83,22 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
   if (offsetTop > window.innerHeight * 1.5) {
     headerStyle.headerOpacity = offsetTop / (height * 1.5) - 1;
   }
-  const [tab, setTab] = useState<number>(props.tab || 1);
+  const [tab, setTab] = useState<number>(props.tab ?? 1);
+  const [changeTab, setChangeTab] = useState<boolean>(false);
   const path = ['', '/', '/index/home', '/index/tags', '/index/my'];
   const handleClick = (e: any) => {
-    const route = path[e.key];
-    setTab(Number(e.key));
-    history.push(route);
+    if (e.domEvent._reactName === 'onClick') {
+      if (e.key !== '2') setChangeTab(true);
+      const route = path[e.key];
+      setTab(Number(e.key));
+      history.push(route);
+    }
   };
 
+  useEffect(() => {
+    const location = window.location.pathname;
+    if (path.indexOf(location) !== -1) setTab(path.indexOf(location));
+  }, []);
   return (
     <Header
       className={fullscreen ? style.navibar_hidden : style.navibar}
@@ -100,7 +111,8 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
         onClick={handleClick}
         theme="light"
         mode="horizontal"
-        defaultSelectedKeys={[tab.toString()]}
+        selectable={changeTab}
+        selectedKeys={[tab.toString()]}
         style={{ display: 'flex', justifyContent: 'flex-end' }}
       >
         {tab === 2 ? <SearchBar /> : null}
