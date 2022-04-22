@@ -1,4 +1,4 @@
-import { articlesContext, fullScreenContext } from '@/pages/home/home';
+import { articlesContext, fullScreenContext } from '@/pages/SubRoute/Layout';
 import { Layout, Menu, AutoComplete } from 'antd';
 const { Header } = Layout;
 import React, { useContext, useEffect, useState } from 'react';
@@ -9,7 +9,6 @@ import { Input as Search } from 'antd';
 interface navibarProps {
   offsetTop: number;
   tab?: number;
-  showSearch?: boolean;
 }
 
 const SearchBar: React.FC<any> = () => {
@@ -81,10 +80,11 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
   if (offsetTop > window.innerHeight * 1.5) {
     headerStyle.headerOpacity = offsetTop / (height * 1.5) - 1;
   }
-  const tab = props.tab ?? 1;
-  const path = ['', '/', '/home', '/tags'];
+  const [tab, setTab] = useState<number>(props.tab || 1);
+  const path = ['', '/', '/index/home', '/index/tags', '/index/my'];
   const handleClick = (e: any) => {
     const route = path[e.key];
+    setTab(Number(e.key));
     history.push(route);
   };
 
@@ -103,7 +103,7 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
         defaultSelectedKeys={[tab.toString()]}
         style={{ display: 'flex', justifyContent: 'flex-end' }}
       >
-        {props.showSearch ? <SearchBar /> : null}
+        {tab === 2 ? <SearchBar /> : null}
         <Menu.Item key="1" style={{ padding: '0 30px' }}>
           首页
         </Menu.Item>

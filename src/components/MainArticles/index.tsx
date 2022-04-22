@@ -3,7 +3,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import { LegacyRef, RefObject, useContext, useEffect, useState } from 'react';
 import Request from '@/apis/request';
 import useDynamicRefs from 'use-dynamic-refs';
-import { articlesContext } from '@/pages/home/home';
+import { articlesContext } from '@/pages/SubRoute/Layout';
 
 const request = new Request();
 const getArticles = async () => {

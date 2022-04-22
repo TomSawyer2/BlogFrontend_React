@@ -1,4 +1,4 @@
-import { fullScreenContext } from '@/pages/home/home';
+import { fullScreenContext } from '@/pages/SubRoute/Layout';
 import { forwardRef, useContext, useImperativeHandle, useState } from 'react';
 import ArticleBrief from './ArticleBrief';
 import Circle from './Circle';

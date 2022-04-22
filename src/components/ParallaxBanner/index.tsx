@@ -18,7 +18,7 @@ const ParallaxBanner: React.FC<any> = () => {
     const io = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         setTimeout(() => {
-          history.push('/home');
+          history.push('/index/home');
         }, 2000);
       }
     });

@@ -1,5 +1,4 @@
 import styles from './tags.less';
-import NavigationBar from '@/components/NavigationBar';
 import GlassCard from '@/components/GlassCard/GlassCard';
 import Request from '@/apis/request';
 import { useEffect, useState } from 'react';
@@ -17,8 +16,6 @@ export default function IndexPage(this: any) {
   useEffect(() => {
     const fetchAllTags = async () => {
       const result = await getAllTags();
-      console.log(result);
-
       setTags(result);
       setRender(true);
     };
@@ -27,7 +24,6 @@ export default function IndexPage(this: any) {
 
   return (
     <div className={styles.container}>
-      <NavigationBar offsetTop={1000000} tab={3} showSearch={false} />
       {render ? <GlassCard tags={tags} /> : null}
     </div>
   );
