@@ -25,7 +25,7 @@ const Card: React.FC = () => {
         <div className="blog-slider__item swiper-slide">
           <div className="blog-slider__img">
             <img
-              src="https://avatars.githubusercontent.com/u/72244981?s=400&u=c6e0f639d0872bfd9f41da41669db8cba8d14e39&v=4"
+              src="https://blog.tomsawyer2.xyz/pics/github_avatar.jfif"
               alt=""
             />
           </div>
@@ -45,7 +45,7 @@ const Card: React.FC = () => {
         <div className="blog-slider__item swiper-slide">
           <div className="blog-slider__img">
             <img
-              src="https://portrait.gitee.com/uploads/avatars/user/2780/8341470_hanserena_1605856815.png!avatar200"
+              src="https://blog.tomsawyer2.xyz/pics/gitee_avatar.png"
               alt=""
             />
           </div>
