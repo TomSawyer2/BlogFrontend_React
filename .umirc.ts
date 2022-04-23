@@ -27,10 +27,15 @@ export default defineConfig({
         },
       ],
     },
+    {
+      path: '/ui',
+      component: '@/pages/ui/ui',
+    },
   ],
   title: '博客 - TomSawyer2',
   favicon: './favicon.ico',
   fastRefresh: {},
   mfsu: {},
   dynamicImport: {},
+  sass: {},
 });
