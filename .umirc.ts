@@ -1,6 +1,9 @@
 import { defineConfig } from 'umi';
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 export default defineConfig({
+  hash: true,
+  webpack5: {},
   nodeModulesTransform: {
     type: 'none',
   },
@@ -35,7 +38,18 @@ export default defineConfig({
   title: '博客 - TomSawyer2',
   favicon: './favicon.ico',
   fastRefresh: {},
-  mfsu: {},
+  // mfsu: {},
   dynamicImport: {},
   sass: {},
+  copy: ['/pwa/manifest.webmanifest'],
+  links: [{ rel: 'manifest', href: '/manifest.webmanifest' }],
+  chainWebpack(memo) {
+    memo.plugin('workbox').use(InjectManifest, [
+      {
+        swSrc: './pwa/service-worker.ts',
+        swDest: 'service-worker.js',
+        exclude: [/\.map$/, /favicon\.ico$/, /^manifest.*\.js?$/],
+      },
+    ]);
+  },
 });

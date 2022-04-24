@@ -24,7 +24,9 @@
     "typings.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.css"
+    "src/**/*.css",
+    "pwa/service-worker.ts",
+    "pwa/register-service-worker.ts"
   ],
   "exclude": [
     "node_modules",

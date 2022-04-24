@@ -16,4 +16,5 @@ declare module '*.svg' {
 
 interface Window {
   fullpage_api: any;
+  __WB_MANIFEST: any;
 }
