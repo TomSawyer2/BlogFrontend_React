@@ -16,6 +16,7 @@ const MetaInfo: React.FC<MetaInfoProps> = (props) => {
     ],
     openGraph: {
       title: `${props.title}`,
+      type: 'article',
       image: `${props.imgUrl}`,
       site_name: '博客 - TomSawyer2',
     },

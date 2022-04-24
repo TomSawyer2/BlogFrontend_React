@@ -15,6 +15,7 @@ const Personal: React.FC = () => {
     ],
     openGraph: {
       title: `Personal page of TomSawyer2's Blog`,
+      type: 'article',
       image: `https://blog.tomsawyer2.xyz/pics/github_avatar.jfif`,
       site_name: '博客 - TomSawyer2',
     },
