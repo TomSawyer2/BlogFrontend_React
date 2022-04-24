@@ -39,7 +39,9 @@ export default defineConfig({
   favicon: './favicon.ico',
   fastRefresh: {},
   // mfsu: {},
-  dynamicImport: {},
+  dynamicImport: {
+    loading: '@/components/PageLoading/PageLoading',
+  },
   sass: {},
   copy: ['/pwa/manifest.webmanifest'],
   links: [{ rel: 'manifest', href: '/manifest.webmanifest' }],
