@@ -7,15 +7,17 @@ import { Anchor } from 'antd';
 import { createContext, useEffect, useMemo, useState } from 'react';
 import CircleMenu from '../CircleMenu/CircleMenu';
 import QRCode from '../QRCode/QRCode';
+import MetaInfo from '../MetaInfo/MetaInfo';
 
 interface ArticleBriefProps {
   title: string;
   brief: string;
-  tags: string[];
+  tags: string;
   mykey: number;
   fullscreen: boolean;
   id: number;
   isVisible: boolean;
+  imgUrl?: string;
 }
 
 export const articleNavContext = createContext({});
@@ -118,6 +120,14 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
           <span className={style.tag}>{props.tags}</span>
         </div>
       )}
+      {props.isVisible ? (
+        <MetaInfo
+          title={props.title}
+          tags={props.tags}
+          imgUrl={props.imgUrl}
+          brief={props.brief}
+        />
+      ) : null}
     </>
   );
 };

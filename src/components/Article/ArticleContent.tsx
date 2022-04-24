@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useReducer, useState } from 'react';
 import Request from '@/apis/request';
 import Markdown from 'react-markdown';
 import styles from './ArticleContent.less';
@@ -34,6 +34,7 @@ const ArticleContent: React.FC<ArticleContentProps> = (props) => {
       fetchArticles();
     }
   }, [props.isVisible]);
+
   return (
     <div className={styles.articleContent} id="articlemd">
       {render ? (

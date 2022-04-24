@@ -9,7 +9,7 @@ interface ArticleProps {
   imgUrl?: string;
   ref?: any;
   brief: string;
-  tags: string[];
+  tags: string;
   id: number;
 }
 
@@ -53,6 +53,7 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
       fullscreen={fullscreen}
       id={props.id}
       isVisible={visible}
+      imgUrl={props.imgUrl}
     />,
   ];
   return (

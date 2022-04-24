@@ -54,7 +54,7 @@ const MainArticles: React.FC<any> = () => {
                   imgUrl: string | undefined;
                   id: number;
                   brief: string;
-                  tags: string[];
+                  tags: string;
                 },
                 idx: number,
               ) => {
