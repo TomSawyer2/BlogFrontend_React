@@ -1,5 +1,6 @@
 import BubblePink from '@/components/BubblePink/BubblePink';
 import Card from '@/components/Card/Card';
+import FriendCard from '@/components/Card/FriendCard';
 import GitHubCard from '@/components/Card/GitHubCard';
 import Wave from '@/components/Wave/Wave';
 import styles from './personal.less';
@@ -15,8 +16,13 @@ const Personal: React.FC = () => {
           <Wave />
         </div>
         <div className={styles.cardContainer}>
-          <Card />
-          <GitHubCard />
+          <div className={styles.cardContainer_top}>
+            <Card />
+            <GitHubCard />
+          </div>
+          <div className={styles.cardContainer_bottom}>
+            <FriendCard />
+          </div>
         </div>
       </div>
     </>

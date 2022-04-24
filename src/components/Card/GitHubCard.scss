@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+  margin: 0 20px;
 
   width: 95%;
   position: relative;
@@ -11,6 +12,5 @@
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 25px;
   border-radius: 25px;
-  height: 320px;
-  transform: translateX(-50px);
+  height: 260px;
 }
