@@ -31,6 +31,7 @@ const MainArticles: React.FC<any> = () => {
       animateAnchor
       anchors={articles.map((item: any) => encodeURIComponent(item.title))}
       scrollOverflow={true}
+      fitToSection={true}
       normalScrollElements={
         '#articlemd, #mdnavbar, .markdown-navigation, .ant-select-dropdown'
       }
