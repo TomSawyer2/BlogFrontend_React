@@ -1,13 +1,13 @@
 .bubbles {
     position: absolute;
     width: 100%;
-    height: 98%;
+    height: 100%;
     z-index: 0;
     overflow: hidden;
-    /* top: 0; */
+    /* top: 5px; */
     /* left: 0; */
     pointer-events: none;
-    transform: translateY(-60px);
+    transform: translateY(-64px);
 }
 
 .bubble {

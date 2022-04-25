@@ -4,7 +4,7 @@ import Bubbles from '../../components/Bubble';
 
 const Page: React.FC<any> = () => {
   return (
-    <div style={{ height: 'calc(100vh - 64px)', overflow: 'hidden' }}>
+    <div>
       <Bubbles mainColor={'#66ccff'} />
       <MainArticles />
     </div>
