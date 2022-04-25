@@ -1,5 +1,4 @@
 import ArticleContent from '../Article/ArticleContent';
-import Bubbles from '../Bubble';
 import style from './ArticleBrief.css';
 import MarkNav from 'markdown-navbar';
 import 'markdown-navbar/dist/navbar.css';
@@ -51,7 +50,6 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
 
   return (
     <>
-      <Bubbles mainColor={'#66ccff'} />
       {props.fullscreen ? (
         <articleNavContext.Provider value={articleNavContextMemo}>
           <div className={style.articleContent}>
