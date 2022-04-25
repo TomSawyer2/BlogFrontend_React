@@ -9,7 +9,6 @@ const ui = () => {
         title={`UI of TomSawyer2's Blog`}
         imgUrl={`https://blog.tomsawyer2.xyz/pics/github_avatar.jfif`}
       />
-      ;
       <PageLoading />
     </>
   );

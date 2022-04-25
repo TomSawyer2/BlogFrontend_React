@@ -11,7 +11,6 @@ export default function IndexPage(this: any) {
         title={`TomSawyer2's Blog`}
         imgUrl={`https://blog.tomsawyer2.xyz/pics/github_avatar.jfif`}
       />
-      ;
     </>
   );
 }

@@ -30,7 +30,7 @@ export default function IndexPage(this: any) {
         title={`Tags of TomSawyer2's Blog`}
         imgUrl={`https://blog.tomsawyer2.xyz/pics/github_avatar.jfif`}
       />
-      ;{render ? <GlassCard tags={tags} /> : null}
+      {render ? <GlassCard tags={tags} /> : null}
     </div>
   );
 }
