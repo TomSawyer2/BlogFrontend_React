@@ -1,23 +1,25 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { Helmet } from 'react-helmet-async';
-interface MetaInfoProps {
+
+interface MetaInfoPageProps {
   title: string;
   tags: string;
   imgUrl?: string;
-  brief: string;
 }
 
-const MetaInfo: React.FC<MetaInfoProps> = (props) => {
+const MetaInfoPage: React.FC<MetaInfoPageProps> = (props) => {
   return (
     <HelmetProvider>
       <Helmet defer={false}>
         <meta property="og:title" content={props.title} />
         <meta property="og:image" content={props.imgUrl} />
-        <meta property="og:tags" content={props.tags.split('-').join(', ')} />
-        <meta property="description" content={props.brief} />
+        <meta
+          property="og:keywords"
+          content={props.tags.split('-').join(', ')}
+        />
       </Helmet>
     </HelmetProvider>
   );
 };
 
-export default MetaInfo;
+export default MetaInfoPage;

@@ -1,24 +1,17 @@
 import styles from './index.css';
 import ParallaxBanner from '@/components/ParallaxBanner';
-import useMetaTags from 'react-metatags-hook';
+import MetaInfoPage from '@/components/MetaInfo/MetaInfoPage';
 
 export default function IndexPage(this: any) {
-  useMetaTags({
-    description: `TomSawyer2's Blog`,
-    metas: [
-      { name: 'keywords', content: `TomSawyer2, Blog` },
-      { name: 'url', content: `${location.href}` },
-    ],
-    openGraph: {
-      title: `TomSawyer2's Blog`,
-      type: 'article',
-      image: `https://blog.tomsawyer2.xyz/pics/github_avatar.jfif`,
-      site_name: '博客 - TomSawyer2',
-    },
-  });
   return (
     <>
       <ParallaxBanner className={styles} />
+      <MetaInfoPage
+        tags="TomSawyer2, Blog"
+        title={`TomSawyer2's Blog`}
+        imgUrl={`https://blog.tomsawyer2.xyz/pics/github_avatar.jfif`}
+      />
+      ;
     </>
   );
 }

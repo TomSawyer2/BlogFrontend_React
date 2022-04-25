@@ -2,7 +2,7 @@ import styles from './tags.less';
 import GlassCard from '@/components/GlassCard/GlassCard';
 import Request from '@/apis/request';
 import { useEffect, useState } from 'react';
-import useMetaTags from 'react-metatags-hook';
+import MetaInfoPage from '@/components/MetaInfo/MetaInfoPage';
 
 const request = new Request();
 const getAllTags = async () => {
@@ -23,23 +23,14 @@ export default function IndexPage(this: any) {
     fetchAllTags();
   }, []);
 
-  useMetaTags({
-    description: `Tags of TomSawyer2's Blog`,
-    metas: [
-      { name: 'keywords', content: `tag` },
-      { name: 'url', content: `${location.href}` },
-    ],
-    openGraph: {
-      title: `Tags of TomSawyer2's Blog`,
-      type: 'article',
-      image: `https://blog.tomsawyer2.xyz/pics/github_avatar.jfif`,
-      site_name: '博客 - TomSawyer2',
-    },
-  });
-
   return (
     <div className={styles.container}>
-      {render ? <GlassCard tags={tags} /> : null}
+      <MetaInfoPage
+        tags="tag"
+        title={`Tags of TomSawyer2's Blog`}
+        imgUrl={`https://blog.tomsawyer2.xyz/pics/github_avatar.jfif`}
+      />
+      ;{render ? <GlassCard tags={tags} /> : null}
     </div>
   );
 }
