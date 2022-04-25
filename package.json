@@ -3,6 +3,7 @@
   "scripts": {
     "start": "umi dev",
     "build": "umi build",
+    "build:prod": "cross-env ANALYZE=1 umi build",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
@@ -43,6 +44,7 @@
     "remark-gfm": "^3.0.1",
     "umi": "^3.5.23",
     "use-dynamic-refs": "^1.0.0",
+    "webpack-bundle-analyzer": "^4.5.0",
     "workbox-webpack-plugin": "^6.5.3"
   },
   "devDependencies": {
