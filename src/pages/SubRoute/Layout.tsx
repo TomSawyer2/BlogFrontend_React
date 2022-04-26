@@ -14,6 +14,13 @@ export default (props: any) => {
         <articlesContext.Provider value={{ articles, setArticles }}>
           <NavigationBar offsetTop={1000000} tab={2} />
           {props.children}
+          <a
+            href="https://icp.gov.moe/?keyword=20220830"
+            target="_blank"
+            style={{ position: 'fixed', bottom: '0', left: '50%' }}
+          >
+            萌ICP备20220830号
+          </a>
         </articlesContext.Provider>
       </fullScreenContext.Provider>
     </div>
