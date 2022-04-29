@@ -15,8 +15,8 @@
   margin: 10px 20px 0px 20px;
   text-align: center;
   animation: fade-in; 
-  animation-duration: 1.2s; 
-  -webkit-animation: fade-in 1.2s; 
+  animation-duration: 1.4s; 
+  -webkit-animation: fade-in 1.4s; 
 }
 .title_fs {
   padding: 7px 0;
@@ -37,8 +37,8 @@
   margin: 10px 20px 0px 20px;
   text-align: center;
   animation: fade-in; 
-  animation-duration: 1.5s; 
-  -webkit-animation: fade-in 1.5s; 
+  animation-duration: 1.6s; 
+  -webkit-animation: fade-in 1.6s; 
 }
 
 .brief_fs {
@@ -59,8 +59,8 @@
   margin: 10px 20px 0px 20px;
   text-align: center;
   animation: fade-in; 
-  animation-duration: 1.7s; 
-  -webkit-animation: fade-in 1.7s; 
+  animation-duration: 1.8s; 
+  -webkit-animation: fade-in 1.8s; 
 }
 
 .tag_fs {
