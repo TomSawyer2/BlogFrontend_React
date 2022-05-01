@@ -12,9 +12,9 @@ const image3 =
 const image4 =
   'https://upload-bbs.mihoyo.com/upload/2021/10/19/246137258/d58272149b7429cd5c667cb757a3b237_1388123535334324587.jpg';
 
-const ParallaxBanner: React.FC<any> = () => {
+const ParallaxBanner: React.FC = () => {
   useEffect((): void => {
-    const lastText: any = document.getElementById('lastText');
+    const lastText: HTMLElement | null = document.getElementById('lastText');
     const io = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         setTimeout(() => {

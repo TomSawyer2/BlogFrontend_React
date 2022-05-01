@@ -1,13 +1,5 @@
 import styles from './GlassCard.less';
 
-interface tag {
-  id: number;
-  name: string;
-  color: string;
-  value: number;
-  imgUrl: string;
-}
-
 interface GlassCardProps {
   tags: tag[];
 }

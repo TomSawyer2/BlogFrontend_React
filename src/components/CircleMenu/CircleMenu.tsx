@@ -10,8 +10,6 @@ const CircleMenu: React.FC<CircleMenuProps> = (props) => {
   const [show, setShow] = useState<boolean>(false);
   const handleOpenQRCode = () => {
     props.setQRCodeStatus(!props.QRCodeStatus);
-    // const input: any = document.getElementById('menu_toggler');
-    // input.checked = false;
     setShow(!show);
   };
 

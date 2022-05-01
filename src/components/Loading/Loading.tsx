@@ -1,6 +1,6 @@
 import styles from './Loading.less';
 
-const LoadingEffect: React.FC<any> = () => {
+const LoadingEffect: React.FC = () => {
   const valueSVG = `
     1 0 0 0 0
     0 1 0 0 0

@@ -2,10 +2,12 @@ import styles from './index.css';
 import ParallaxBanner from '@/components/ParallaxBanner';
 import MetaInfoPage from '@/components/MetaInfo/MetaInfoPage';
 
-export default function IndexPage(this: any) {
+export default function IndexPage() {
   return (
     <>
-      <ParallaxBanner className={styles} />
+      <div className={styles}>
+        <ParallaxBanner />
+      </div>
       <MetaInfoPage
         tags="TomSawyer2, Blog"
         title={`TomSawyer2's Blog`}

@@ -10,8 +10,8 @@ const getAllTags = async () => {
   return result.data;
 };
 
-export default function IndexPage(this: any) {
-  const [tags, setTags] = useState<any[]>([]);
+export default function IndexPage() {
+  const [tags, setTags] = useState<tag[]>([]);
   const [render, setRender] = useState<boolean>(false);
 
   useEffect(() => {

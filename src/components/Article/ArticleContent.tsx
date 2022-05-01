@@ -19,9 +19,9 @@ interface ArticleContentProps {
 }
 
 const ArticleContent: React.FC<ArticleContentProps> = (props) => {
-  const [article, setArticle] = useState<any>({});
+  const [article, setArticle] = useState<article>({} as article);
   const [render, setRender] = useState<boolean>(false);
-  const { articleNav, setArticleNav } = useContext<any>(articleNavContext);
+  const { setArticleNav } = useContext<any>(articleNavContext);
 
   useEffect(() => {
     if (props.isVisible) {
