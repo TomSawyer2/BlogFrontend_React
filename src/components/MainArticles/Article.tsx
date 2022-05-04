@@ -25,14 +25,15 @@ const Article: React.FC<ArticleProps> = forwardRef((props, ref) => {
           setVisible(state);
         }, 500);
   };
-  const { fullscreen, setFullscreen } = useContext<any>(fullScreenContext);
+  const { fullscreen, setFullscreen } =
+    useContext<fullScreenContextProps>(fullScreenContext);
   const handleClick = () => {
     window?.fullpage_api?.setAllowScrolling(fullscreen);
     setFullscreen(!fullscreen);
   };
 
   const isOdd = props.mykey % 2 === 0;
-  const handleFullscreen: any = () => {
+  const handleFullscreen = () => {
     if (isOdd) {
       return fullscreen ? style.circle_left_fs : style.circle_left;
     } else {

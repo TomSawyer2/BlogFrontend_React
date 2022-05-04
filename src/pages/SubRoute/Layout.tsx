@@ -1,12 +1,13 @@
 import NavigationBar from '@/components/NavigationBar';
+import { IRouteComponentProps } from 'umi';
 import { createContext, useState } from 'react';
 
-export const fullScreenContext = createContext({});
-export const articlesContext = createContext({});
+export const fullScreenContext = createContext({} as fullScreenContextProps);
+export const articlesContext = createContext({} as articlesContextProps);
 
-export default (props: any) => {
+export default (props: IRouteComponentProps) => {
   const [fullscreen, setFullscreen] = useState<boolean>(false);
-  const [articles, setArticles] = useState<any>([]);
+  const [articles, setArticles] = useState<article[]>([]);
 
   return (
     <div>

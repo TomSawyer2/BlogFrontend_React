@@ -9,7 +9,6 @@ const getQRCode = async (anchor: string) => {
       light: '#ffffff00',
     },
   });
-
   return result;
 };
 

@@ -4,7 +4,7 @@ import Markdown from 'react-markdown';
 import styles from './ArticleContent.less';
 import LoadingEffect from '../Loading/Loading';
 import remarkGfm from 'remark-gfm';
-import { articleNavContext } from '../MainArticles/ArticleBrief';
+// import { articleNavContext } from '../MainArticles/ArticleBrief';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
 const request = new Request();
@@ -21,7 +21,7 @@ interface ArticleContentProps {
 const ArticleContent: React.FC<ArticleContentProps> = (props) => {
   const [article, setArticle] = useState<article>({} as article);
   const [render, setRender] = useState<boolean>(false);
-  const { setArticleNav } = useContext<any>(articleNavContext);
+  // const { setArticleNav } = useContext<any>(articleNavContext);
 
   useEffect(() => {
     if (props.isVisible) {
@@ -29,7 +29,7 @@ const ArticleContent: React.FC<ArticleContentProps> = (props) => {
         const result = await getArticleById(props.id);
         setArticle(result);
         setRender(true);
-        setArticleNav(result.content);
+        // setArticleNav(result.content);
       };
       fetchArticles();
     }

@@ -1,5 +1,5 @@
 import Article from './Article';
-import ReactFullpage from '@fullpage/react-fullpage';
+import ReactFullpage, { Item } from '@fullpage/react-fullpage';
 import { LegacyRef, RefObject, useContext, useEffect, useState } from 'react';
 import Request from '@/apis/request';
 import useDynamicRefs from 'use-dynamic-refs';
@@ -11,8 +11,9 @@ const getArticles = async () => {
   return result.data;
 };
 
-const MainArticles: React.FC<any> = () => {
-  const { articles, setArticles } = useContext<any>(articlesContext);
+const MainArticles: React.FC = () => {
+  const { articles, setArticles } =
+    useContext<articlesContextProps>(articlesContext);
   const [render, setRender] = useState<boolean>(false);
   const [getRef, setRef] = useDynamicRefs();
   useEffect(() => {
@@ -29,21 +30,25 @@ const MainArticles: React.FC<any> = () => {
     <ReactFullpage
       fadingEffect
       animateAnchor
-      anchors={articles.map((item: any) => encodeURIComponent(item.title))}
+      anchors={articles.map((item: article) => encodeURIComponent(item.title))}
       scrollOverflow={true}
       fitToSection={true}
       normalScrollElements={
         '#articlemd, #mdnavbar, .markdown-navigation, .ant-select-dropdown'
       }
-      onLeave={(origin: any, destination: any) => {
-        const ref1: any = (
-          getRef(origin.index.toString()) as RefObject<HTMLDivElement>
+      onLeave={(origin: Item, destination: Item) => {
+        const ref1: (HTMLDivElement & { handleChange: Function }) | null = (
+          getRef(origin.index.toString()) as RefObject<
+            HTMLDivElement & { handleChange: Function }
+          >
         ).current;
-        ref1.handleChange(false);
-        const ref2: any = (
-          getRef(destination.index.toString()) as RefObject<HTMLDivElement>
+        ref1?.handleChange(false);
+        const ref2: (HTMLDivElement & { handleChange: Function }) | null = (
+          getRef(destination.index.toString()) as RefObject<
+            HTMLDivElement & { handleChange: Function }
+          >
         ).current;
-        ref2.handleChange(true);
+        ref2?.handleChange(true);
       }}
       render={() => {
         return (

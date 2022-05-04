@@ -3,5 +3,5 @@ interface tag {
   name: string;
   color: string;
   value: number;
-  img_url: string;
+  imgUrl: string;
 }

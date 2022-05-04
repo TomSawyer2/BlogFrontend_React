@@ -12,31 +12,33 @@ interface navibarProps {
 }
 
 const SearchBar: React.FC = () => {
-  const { articles } = useContext<any>(articlesContext);
+  const { articles } = useContext<articlesContextProps>(articlesContext);
   const [titles, setTitles] = useState<string[]>([]);
-  const [titlesMap, setTitlesMap] = useState<any[]>([]);
-  const [searchItems, setSearchItems] = useState<any[]>([]);
+  const [titlesMap, setTitlesMap] = useState<titlesMap[]>([]);
+  const [searchItems, setSearchItems] = useState<titlesMap[]>([]);
   useEffect((): void => {
     if (articles.length > 0) {
-      setTitles(articles.map((item: any) => item.title));
+      setTitles(articles.map((item: article) => item.title));
       setTitlesMap(
-        articles.reduce((prev: any, curr: any) => {
+        articles.reduce((prev: titlesMap[], curr: article) => {
           return [...prev, { value: curr.title }];
         }, []),
       );
     }
   }, [articles]);
 
-  const handleSearch = (e: any) => {
-    const searchEvent = e.target.value;
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const searchEvent = (e.target as HTMLInputElement).value;
     if (
-      titles.some((item: any) => item.includes(searchEvent)) &&
+      titles.some((item: string) => item.includes(searchEvent)) &&
       searchEvent !== ''
     ) {
-      const index = titles.findIndex((item: any) => item.includes(searchEvent));
-      window?.fullpage_api?.moveTo(encodeURIComponent(titles[index]));
+      const index = titles.findIndex((item: string) =>
+        item.includes(searchEvent),
+      );
+      window?.fullpage_api?.moveTo(encodeURIComponent(titles[index]), 0);
       setTitlesMap(
-        articles.reduce((prev: any, curr: any) => {
+        articles.reduce((prev: titlesMap[], curr: article) => {
           return [...prev, { value: curr.title }];
         }, []),
       );
@@ -45,9 +47,9 @@ const SearchBar: React.FC = () => {
     searchInput?.blur();
   };
 
-  const handleFilter = (e: any) => {
+  const handleFilter = (e: string) => {
     setSearchItems(
-      titlesMap.filter((item: any) =>
+      titlesMap.filter((item: titlesMap) =>
         item.value.toUpperCase().includes(e.toUpperCase()),
       ),
     );
@@ -77,8 +79,12 @@ const SearchBar: React.FC = () => {
   );
 };
 
+type domEvent =
+  | (React.KeyboardEvent<HTMLElement> & { _reactName: string })
+  | (React.MouseEvent<HTMLElement, MouseEvent> & { _reactName: string });
+
 const NavigationBar: React.FC<navibarProps> = (props) => {
-  const { fullscreen } = useContext<any>(fullScreenContext);
+  const { fullscreen } = useContext<fullScreenContextProps>(fullScreenContext);
   const headerStyle = {
     headerOpacity: 0,
   };
@@ -90,11 +96,17 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
   const [tab, setTab] = useState<number>(props.tab ?? 1);
   const [changeTab, setChangeTab] = useState<boolean>(false);
   const path = ['', '/', '/index/home', '/index/tags', '/index/my'];
-  const handleClick = (e: any) => {
-    if (e.domEvent._reactName === 'onClick') {
-      if (e.key !== '2') setChangeTab(true);
-      const route = path[e.key];
-      setTab(Number(e.key));
+  const handleClick = ({
+    key,
+    domEvent,
+  }: {
+    key: string;
+    domEvent: domEvent;
+  }) => {
+    if (domEvent._reactName === 'onClick') {
+      if (key !== '2') setChangeTab(true);
+      const route = path[Number(key)];
+      setTab(Number(key));
       history.push(route);
     }
   };
@@ -112,7 +124,12 @@ const NavigationBar: React.FC<navibarProps> = (props) => {
       }}
     >
       <Menu
-        onClick={handleClick}
+        onClick={({ key, domEvent }) =>
+          handleClick({ key, domEvent } as {
+            key: string;
+            domEvent: domEvent;
+          })
+        }
         theme="light"
         mode="horizontal"
         selectable={changeTab}

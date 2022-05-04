@@ -8,7 +8,10 @@ const GlassCard: React.FC<GlassCardProps> = (props) => {
   return (
     <div className={styles.container}>
       {props.tags.map((tag: tag) => (
-        <div className={styles.box} style={{ '--bgurl': `url(${tag.imgUrl})` }}>
+        <div
+          className={styles.box}
+          style={{ '--bgurl': `url(${tag.imgUrl})` } as React.CSSProperties}
+        >
           <span></span>
           <div className={styles.content}>
             <p className={styles.text}>{tag.name}</p>

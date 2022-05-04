@@ -2,7 +2,6 @@ import ArticleContent from '../Article/ArticleContent';
 import style from './ArticleBrief.css';
 import MarkNav from 'markdown-navbar';
 import 'markdown-navbar/dist/navbar.css';
-import { Anchor } from 'antd';
 import { createContext, useEffect, useMemo, useState } from 'react';
 import CircleMenu from '../CircleMenu/CircleMenu';
 import QRCode from '../QRCode/QRCode';
@@ -23,24 +22,24 @@ export const articleNavContext = createContext({});
 
 const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
   // const mainColor = getDominantColor(document.getElementById(`img${props.mykey}`)).r;
-  const [articleNav, setArticleNav] = useState<any>('');
-  const articleNavContextMemo = useMemo(
-    () => ({
-      articleNav,
-      setArticleNav,
-    }),
-    [articleNav],
-  );
-  const [hElements, sethElements] = useState<any>([]);
-  useEffect(() => {
-    const hElments = [
-      ...document.getElementsByTagName('h1'),
-      ...document.getElementsByTagName('h2'),
-      ...document.getElementsByTagName('h3'),
-      ...document.getElementsByTagName('h4'),
-    ];
-    sethElements(Array.from(hElments));
-  }, [articleNav]);
+  // const [articleNav, setArticleNav] = useState<any>('');
+  // const articleNavContextMemo = useMemo(
+  //   () => ({
+  //     articleNav,
+  //     setArticleNav,
+  //   }),
+  //   [articleNav],
+  // );
+  // const [hElements, sethElements] = useState<any>([]);
+  // useEffect(() => {
+  //   const hElments = [
+  //     ...document.getElementsByTagName('h1'),
+  //     ...document.getElementsByTagName('h2'),
+  //     ...document.getElementsByTagName('h3'),
+  //     ...document.getElementsByTagName('h4'),
+  //   ];
+  //   sethElements(Array.from(hElments));
+  // }, [articleNav]);
 
   const [QRCodeStatus, setQRCodeStatus] = useState<boolean>(false);
 
@@ -51,16 +50,16 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
   return (
     <>
       {props.fullscreen ? (
-        <articleNavContext.Provider value={articleNavContextMemo}>
-          <div className={style.articleContent}>
-            <div
-              onClick={(e) => {
-                e.stopPropagation();
-                e.nativeEvent.stopImmediatePropagation();
-              }}
-              className={style.markNav}
-            >
-              {/* <Anchor>
+        // <articleNavContext.Provider value={articleNavContextMemo}>
+        <div className={style.articleContent}>
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              e.nativeEvent.stopImmediatePropagation();
+            }}
+            className={style.markNav}
+          >
+            {/* <Anchor>
                 <MarkNav
                   source={articleNav}
                   headingTopOffset={80}
@@ -80,38 +79,38 @@ const ArticleBrief: React.FC<ArticleBriefProps> = (props) => {
                   }}
                 />
               </Anchor> */}
-            </div>
-
-            <div
-              className={style.articleContent_box}
-              onClick={(e) => {
-                e.stopPropagation();
-                e.nativeEvent.stopImmediatePropagation();
-              }}
-            >
-              <div className={style.articleContent_header}>
-                <span className={style.title_fs}>{props.title}</span>
-                <span className={style.brief_fs}>{props.brief}</span>
-                <span className={style.tag_fs}>{props.tags}</span>
-              </div>
-              <ArticleContent id={props.id} isVisible={props.isVisible} />
-            </div>
-            <div
-              style={{ position: 'absolute', bottom: '100px', right: '100px' }}
-              onClick={(e) => {
-                e.stopPropagation();
-                e.nativeEvent.stopImmediatePropagation();
-              }}
-            >
-              <CircleMenu
-                QRCodeStatus={QRCodeStatus}
-                setQRCodeStatus={setQRCodeStatus}
-              />
-            </div>
-            {QRCodeStatus ? <QRCode anchor={props.title} /> : null}
           </div>
-        </articleNavContext.Provider>
+
+          <div
+            className={style.articleContent_box}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.nativeEvent.stopImmediatePropagation();
+            }}
+          >
+            <div className={style.articleContent_header}>
+              <span className={style.title_fs}>{props.title}</span>
+              <span className={style.brief_fs}>{props.brief}</span>
+              <span className={style.tag_fs}>{props.tags}</span>
+            </div>
+            <ArticleContent id={props.id} isVisible={props.isVisible} />
+          </div>
+          <div
+            style={{ position: 'absolute', bottom: '100px', right: '100px' }}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.nativeEvent.stopImmediatePropagation();
+            }}
+          >
+            <CircleMenu
+              QRCodeStatus={QRCodeStatus}
+              setQRCodeStatus={setQRCodeStatus}
+            />
+          </div>
+          {QRCodeStatus ? <QRCode anchor={props.title} /> : null}
+        </div>
       ) : (
+        // </articleNavContext.Provider>
         <div className={style.articleBrief}>
           <span className={style.title}>{props.title}</span>
           <span className={style.brief}>{props.brief}</span>

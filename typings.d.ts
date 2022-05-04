@@ -13,8 +13,12 @@ declare module '*.svg' {
   const url: string;
   export default url;
 }
-
+interface PrecacheEntry {
+  integrity?: string;
+  url: string;
+  revision?: string | null;
+}
 interface Window {
-  fullpage_api: any;
-  __WB_MANIFEST: any;
+  fullpage_api: import('@fullpage/react-fullpage').fullpageApi;
+  __WB_MANIFEST: Array<PrecacheEntry | string>;
 }

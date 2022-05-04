@@ -10,13 +10,13 @@ const LoadingEffect: React.FC = () => {
   return (
     <>
       <div className={styles.loader}>
-        <span style={{ '--i': 1 }}></span>
-        <span style={{ '--i': 2 }}></span>
-        <span style={{ '--i': 3 }}></span>
-        <span style={{ '--i': 4 }}></span>
-        <span style={{ '--i': 5 }}></span>
-        <span style={{ '--i': 6 }}></span>
-        <span style={{ '--i': 7 }}></span>
+        <span style={{ '--i': 1 } as React.CSSProperties}></span>
+        <span style={{ '--i': 2 } as React.CSSProperties}></span>
+        <span style={{ '--i': 3 } as React.CSSProperties}></span>
+        <span style={{ '--i': 4 } as React.CSSProperties}></span>
+        <span style={{ '--i': 5 } as React.CSSProperties}></span>
+        <span style={{ '--i': 6 } as React.CSSProperties}></span>
+        <span style={{ '--i': 7 } as React.CSSProperties}></span>
       </div>
       <svg>
         <filter id="gooey">

@@ -8,5 +8,9 @@ interface article {
   update_time: string;
   brief: string;
   have_like: number;
-  img_url: string;
+  imgUrl: string | undefined;
+}
+
+interface titlesMap {
+  [key: string]: string;
 }
