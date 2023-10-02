@@ -3,11 +3,11 @@
   height: 120%;
 }
 
-* {
+/* * {
   -webkit-filter: grayscale(50%);
   -moz-filter: grayscale(50%);
   -ms-filter: grayscale(50%);
   -o-filter: grayscale(50%);
   filter: grayscale(50%);
   filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=0.5);
-}
+} */

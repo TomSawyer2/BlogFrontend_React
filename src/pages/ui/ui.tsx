@@ -7,7 +7,7 @@ const ui = () => {
       <MetaInfoPage
         tags="UI"
         title={`UI of TomSawyer2's Blog`}
-        imgUrl={`https://blog.tomsawyer2.xyz/pics/github_avatar.jfif`}
+        imgUrl={`https://cloudreve-hanserena.oss-cn-hangzhou.aliyuncs.com/pics/venti.jpg`}
       />
       <PageLoading />
     </>

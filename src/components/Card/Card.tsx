@@ -25,7 +25,7 @@ const Card: React.FC = () => {
         <div className="blog-slider__item swiper-slide">
           <div className="blog-slider__img">
             <img
-              src="https://blog.tomsawyer2.xyz/pics/github_avatar.jfif"
+              src="https://cloudreve-hanserena.oss-cn-hangzhou.aliyuncs.com/pics/venti.jpg"
               alt=""
             />
           </div>
@@ -45,7 +45,7 @@ const Card: React.FC = () => {
         <div className="blog-slider__item swiper-slide">
           <div className="blog-slider__img">
             <img
-              src="https://blog.tomsawyer2.xyz/pics/gitee_avatar.png"
+              src="https://cloudreve-hanserena.oss-cn-hangzhou.aliyuncs.com/pics/gitee_avatar.png"
               alt=""
             />
           </div>
@@ -66,7 +66,7 @@ const Card: React.FC = () => {
         <div className="blog-slider__item swiper-slide">
           <div className="blog-slider__img">
             <img
-              src="https://blog.tomsawyer2.xyz/pics/bili_avatar.jpg"
+              src="https://cloudreve-hanserena.oss-cn-hangzhou.aliyuncs.com/pics/bili_avatar.jpg"
               alt=""
             />
           </div>

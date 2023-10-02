@@ -4,7 +4,8 @@ const FriendCard: React.FC = () => {
   const friends = [
     {
       name: 'Vanelord',
-      avatar: 'https://blog.tomsawyer2.xyz/pics/cjr_avatar.jpg',
+      avatar:
+        'https://cloudreve-hanserena.oss-cn-hangzhou.aliyuncs.com/pics/cjr_avatar.jpg',
       url: 'https://vanelord.xyz',
     },
   ];
